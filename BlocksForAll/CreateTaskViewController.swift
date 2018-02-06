@@ -7,5 +7,24 @@
 //
 
 import UIKit
-class CreateTaskViewController: UIViewController {
+class CreateTaskViewController: UIViewController  {
+    
+    @IBOutlet weak var InstructionView: UIView!
+    @IBOutlet weak var SolutionBlocksView: UIView!
+    
+    @IBAction func switchViewInCreateTask(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            InstructionView.isHidden = false
+            SolutionBlocksView.isHidden = true
+        case 1:
+            InstructionView.isHidden = true
+            SolutionBlocksView.isHidden = false
+        default:
+            break
+        }
+    }
+    
+    
+    
 }
