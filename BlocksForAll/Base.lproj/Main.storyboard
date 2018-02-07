@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -113,7 +114,7 @@
             </objects>
             <point key="canvasLocation" x="-1212" y="-489"/>
         </scene>
-        <!--Create Task View Controller-->
+        <!--Create Activity-->
         <scene sceneID="6g4-2x-5zR">
             <objects>
                 <viewController id="Tsg-ZD-f2o" customClass="CreateTaskViewController" customModule="BlocksForAll" customModuleProvider="target" sceneMemberID="viewController">
@@ -126,7 +127,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J3w-qB-7HS">
-                                <rect key="frame" x="0.0" y="200" width="1024" height="568"/>
+                                <rect key="frame" x="0.0" y="121" width="1024" height="647"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="TDh-dJ-OS5" kind="embed" id="d6t-ad-bxE"/>
@@ -140,7 +141,7 @@
                                 </connections>
                             </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Obs-OQ-PbT" userLabel="SwitchViwSegmentedControl">
-                                <rect key="frame" x="244" y="72" width="537" height="29"/>
+                                <rect key="frame" x="283" y="84" width="537" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Instruction"/>
@@ -151,10 +152,36 @@
                                     <action selector="switchViewInCreateTask:" destination="Tsg-ZD-f2o" eventType="valueChanged" id="nFI-KB-cQ1"/>
                                 </connections>
                             </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Activity Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GLK-e9-aa5">
+                                <rect key="frame" x="20" y="89" width="111" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iFh-YC-xDI">
+                                <rect key="frame" x="139" y="84" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                     </view>
-                    <navigationItem key="navigationItem" id="VNH-3k-beW"/>
+                    <navigationItem key="navigationItem" title="Create Activity" id="VNH-3k-beW">
+                        <barButtonItem key="leftBarButtonItem" title="Main Menu" id="D1f-WY-fZC"/>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Done" id="Xrz-eb-iBu"/>
+                            <barButtonItem title="Preview" id="wko-t8-z43"/>
+                            <barButtonItem title="Save" id="2hv-Zc-UVi">
+                                <connections>
+                                    <action selector="SaveButton:" destination="Tsg-ZD-f2o" id="lfE-z1-jyQ"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
+                        <outlet property="ActivityName" destination="iFh-YC-xDI" id="muX-IO-MRN"/>
                         <outlet property="InstructionView" destination="4Ub-Og-ZDK" id="QtT-jE-WBo"/>
                         <outlet property="SolutionBlocksView" destination="J3w-qB-7HS" id="Dcs-Rg-Z87"/>
                         <outlet property="desc" destination="e1W-Ts-Lsg" id="Ejh-MT-R9v"/>
@@ -416,7 +443,11 @@
         <!--Instruction-->
         <scene sceneID="8j7-pW-BmG">
             <objects>
-                <viewController title="Instruction" id="vlM-vp-CIA" sceneMemberID="viewController">
+                <viewController title="Instruction" id="vlM-vp-CIA" customClass="CreateTaskViewController" customModule="BlocksForAll" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yPu-IN-0Fi"/>
+                        <viewControllerLayoutGuide type="bottom" id="AyR-fE-Q6M"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YK1-0k-y4G">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -451,24 +482,32 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="Description" destination="e1W-Ts-Lsg" id="owa-EG-4f5"/>
+                        <outlet property="Hints" destination="XTs-MC-2HW" id="I8c-n5-Lzz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vrv-DL-0c3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-396" y="872"/>
+            <point key="canvasLocation" x="-470" y="1315"/>
         </scene>
         <!--Solution Blocks-->
         <scene sceneID="zAO-cv-XcP">
             <objects>
                 <viewController title="Solution Blocks" id="TDh-dJ-OS5" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zbE-0z-nQX"/>
+                        <viewControllerLayoutGuide type="bottom" id="h4W-rr-QjR"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="IDA-fU-euB">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.23378405158307103" green="0.69958306347150256" blue="0.499968367962558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ddy-CL-uCy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="25" y="688"/>
+            <point key="canvasLocation" x="162" y="1284"/>
         </scene>
         <!--Instruction-->
         <scene sceneID="RRo-qd-MzT">
