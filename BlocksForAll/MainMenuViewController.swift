@@ -25,6 +25,9 @@ class MainMenuViewController: UIViewController {
     @IBAction func GoToCreateTaskView(_ sender: UIButton) {
         self.performSegue(withIdentifier: "CreateTaskSegue", sender: self)
     }
+    @IBAction func GoToDoTaskView(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "DoTaskSegue", sender: self)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
