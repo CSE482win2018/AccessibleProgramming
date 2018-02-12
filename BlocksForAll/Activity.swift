@@ -14,13 +14,12 @@ class Activity: NSObject, NSCoding {
     //MARK: Properties
     var name: String
     var descrip: String?
-    var hints: [String]?
+//    var hints: [String]?
 //    var rating: Int
     
     struct PropertyKey {
         static let name = "name"
         static let descrip = "descrip"
-        static let hints = "hints"
     }
     
     //MARK: Archiving Paths
@@ -28,7 +27,7 @@ class Activity: NSObject, NSCoding {
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("activities")
     
     //MARK: Initialization
-    init?(name: String, descrip: String?, hints: [String]?) {
+    init?(name: String, descrip: String?) {
         
         // The name must not be empty
         guard !name.isEmpty else {
@@ -48,7 +47,6 @@ class Activity: NSObject, NSCoding {
         // Initialize stored properties.
         self.name = name
         self.descrip = descrip
-        self.hints = hints
         
     }
     
@@ -56,7 +54,7 @@ class Activity: NSObject, NSCoding {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: PropertyKey.name)
         aCoder.encode(descrip, forKey: PropertyKey.descrip)
-        aCoder.encode(hints, forKey: PropertyKey.hints)
+//        aCoder.encode(hints, forKey: PropertyKey.hints)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -68,10 +66,10 @@ class Activity: NSObject, NSCoding {
         // Because photo is an optional property of Meal, just use conditional cast.
         let descrip = aDecoder.decodeObject(forKey: PropertyKey.descrip) as? String
         
-        let hints = aDecoder.decodeObject(forKey: PropertyKey.hints) as? [String]
+//        let hints = aDecoder.decodeObject(forKey: PropertyKey.hints) as? [String]
         
         // Must call designated initializer.
-        self.init(name: name, descrip: descrip, hints: hints)
+        self.init(name: name, descrip: descrip)
     }
     
     
