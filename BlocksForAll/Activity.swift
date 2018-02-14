@@ -14,8 +14,8 @@ class Activity: NSObject, NSCoding {
     //MARK: Properties
     var name: String
     var descrip: String?
-//    var hints: [String]?
-//    var rating: Int
+    //    var hints: [String]?
+    //    var rating: Int
     
     struct PropertyKey {
         static let name = "name"
@@ -34,15 +34,15 @@ class Activity: NSObject, NSCoding {
             return nil
         }
         
-//        // The rating must be between 0 and 5 inclusively
-//        guard (rating >= 0) && (rating <= 5) else {
-//            return nil
-//        }
-//
-//        // Initialization should fail if there is no name or if the rating is negative.
-//        if name.isEmpty || rating < 0  {
-//            return nil
-//        }
+        //        // The rating must be between 0 and 5 inclusively
+        //        guard (rating >= 0) && (rating <= 5) else {
+        //            return nil
+        //        }
+        //
+        //        // Initialization should fail if there is no name or if the rating is negative.
+        //        if name.isEmpty || rating < 0  {
+        //            return nil
+        //        }
         
         // Initialize stored properties.
         self.name = name
@@ -54,7 +54,7 @@ class Activity: NSObject, NSCoding {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: PropertyKey.name)
         aCoder.encode(descrip, forKey: PropertyKey.descrip)
-//        aCoder.encode(hints, forKey: PropertyKey.hints)
+        //        aCoder.encode(hints, forKey: PropertyKey.hints)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -66,7 +66,7 @@ class Activity: NSObject, NSCoding {
         // Because photo is an optional property of Meal, just use conditional cast.
         let descrip = aDecoder.decodeObject(forKey: PropertyKey.descrip) as? String
         
-//        let hints = aDecoder.decodeObject(forKey: PropertyKey.hints) as? [String]
+        //        let hints = aDecoder.decodeObject(forKey: PropertyKey.hints) as? [String]
         
         // Must call designated initializer.
         self.init(name: name, descrip: descrip)
@@ -74,3 +74,4 @@ class Activity: NSObject, NSCoding {
     
     
 }
+

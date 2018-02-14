@@ -17,7 +17,7 @@ protocol BlockSelectionDelegate{
     func setParentViewController(_ myVC:UIViewController)
 }
 
-class BlocksViewController:  UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, BlockSelectionDelegate {
+class BlocksViewController:  RobotControlViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, BlockSelectionDelegate {
     
     @IBOutlet weak var blocksProgram: UICollectionView!
     @IBOutlet weak var playTrashToggleButton: UIButton!
@@ -45,27 +45,27 @@ class BlocksViewController:  UIViewController, UICollectionViewDataSource, UICol
     
     // MARK: - View Set Up
     
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        blocksProgram.delegate = self
-//        blocksProgram.dataSource = self
-//
-//        //TOGGLE this off if you want to be able to access menu and spatial buttons with VO on
-//        /*menuButton.isAccessibilityElement = false
-//        menuButton.accessibilityElementsHidden = true
-//        spatialButton.isAccessibilityElement = false
-//        spatialButton.accessibilityElementsHidden = true*/
-//
-//        //#selector(self.addBlockButton(_sender:))
-//        //NotificationCenter.default.addObserver(self, selector: #selector(self.didFinishAnnouncement(dict:)), name: NSNotification.Name.UIAccessibilityAnnouncementDidFinish, object: nil)
-//        // Do any additional setup after loading the view.
-//    }
-//
-//
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//        // Dispose of any resources that can be recreated.
-//    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        blocksProgram.delegate = self
+        blocksProgram.dataSource = self
+        
+        //TOGGLE this off if you want to be able to access menu and spatial buttons with VO on
+        /*menuButton.isAccessibilityElement = false
+        menuButton.accessibilityElementsHidden = true
+        spatialButton.isAccessibilityElement = false
+        spatialButton.accessibilityElementsHidden = true*/
+        
+        //#selector(self.addBlockButton(_sender:))
+        //NotificationCenter.default.addObserver(self, selector: #selector(self.didFinishAnnouncement(dict:)), name: NSNotification.Name.UIAccessibilityAnnouncementDidFinish, object: nil)
+        // Do any additional setup after loading the view.
+    }
+    
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
     // MARK: - Block Selection Delegate
     func unsetBlocks() {
@@ -126,7 +126,7 @@ class BlocksViewController:  UIViewController, UICollectionViewDataSource, UICol
                 UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
             }else{
                 let commands = createCommandSequence(blocksStack)
-//                play(commands)
+                play(commands)
             }
         }
     }
@@ -589,16 +589,16 @@ class BlocksViewController:  UIViewController, UICollectionViewDataSource, UICol
 
     // MARK: - Navigation
 
-//    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let destinationViewController = segue.destination as? UINavigationController{
-//            if let myTopViewController = destinationViewController.topViewController as? BlocksTypeTableViewController{
-//                myTopViewController.delegate = self
-//                myTopViewController.blockWidth = blockWidth
-//            }
-//        }
-//
-//    }
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationViewController = segue.destination as? UINavigationController{
+            if let myTopViewController = destinationViewController.topViewController as? BlocksTypeTableViewController{
+                myTopViewController.delegate = self
+                myTopViewController.blockWidth = blockWidth
+            }
+        }
+        
+    }
     
 
 }

@@ -11,66 +11,68 @@ import os.log
 
 class CreateTaskViewController: UIViewController  {
     var activity: Activity?
-    @IBOutlet weak var SolutionBlocksView: UIView!
     
- 
+    @IBOutlet weak var blocksView: UIView!
     
-    @IBOutlet weak var ActivityName: UITextField!
+    @IBOutlet weak var activity_name: UITextField!
+    
+    @IBOutlet weak var activity_descrip: UITextView!
     // area in instruction view
-    @IBOutlet weak var Descrip: UITextView!
-    
-    @IBOutlet weak var InstructionView: UIView!
+    @IBOutlet weak var instructionView: UIView!
     
     
-//    lazy var instructionViewController : InstructionViewController = {
-////        let board = UIStoryboard(name: "Main", bundle: Bundle.main)
-//        var vc = self.storyboard.instantiateViewController(withIdentifier: "InstructionViewController") as! InstructionViewController
+    
+    //    lazy var instructionViewController : InstructionViewController = {
+    ////        let board = UIStoryboard(name: "Main", bundle: Bundle.main)
+    //        var vc = self.storyboard.instantiateViewController(withIdentifier: "InstructionViewController") as! InstructionViewController
+    //        self.addViewControllerAsChildViewController(childViewController: vc)
+    //
+    //        return vc
+    //    }()
+    
+//    lazy var solutionBlocksViewController : SolutionBlocksViewController = {
+//        let board = UIStoryboard(name: "Main", bundle: Bundle.main)
+//        var vc = board.instantiateViewController(withIdentifier: "SolutionBlocksViewController") as! SolutionBlocksViewController
 //        self.addViewControllerAsChildViewController(childViewController: vc)
-//
 //        return vc
 //    }()
-    
-    lazy var solutionBlocksViewController : SolutionBlocksViewController = {
-        let board = UIStoryboard(name: "Main", bundle: Bundle.main)
-        var vc = board.instantiateViewController(withIdentifier: "SolutionBlocksViewController") as! SolutionBlocksViewController
-        self.addViewControllerAsChildViewController(childViewController: vc)
-        return vc
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    @IBAction func switchViewInCreateTask(_ sender: UISegmentedControl) {
+    @IBAction func segmentedViewToggle(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            InstructionView.isHidden = false
-            SolutionBlocksView.isHidden = true
+            instructionView.isHidden = false
+            blocksView.isHidden = true
         case 1, 2:
-            InstructionView.isHidden = true
-            SolutionBlocksView.isHidden = false
+            instructionView.isHidden = true
+            blocksView.isHidden = false
         default:
             break
         }
     }
-//    // Mark: view Methods
-//    private func setupView() {
-//        setupSegmentedControl()
-//    }
-//    private func updateView() {
-//        setupSegmentedControl()
-//    }
+
+    
+    //    // Mark: view Methods
+    //    private func setupView() {
+    //        setupSegmentedControl()
+    //    }
+    //    private func updateView() {
+    //        setupSegmentedControl()
+    //    }
     
     
-    
-    @IBAction func DoneCreate(_ sender: UIBarButtonItem) {
+    @IBAction func DoneButton(_ sender: UIButton) {
         saveActivity()
         self.performSegue(withIdentifier: "MenuSegue", sender: self)
     }
-    @IBAction func SaveButton(_ sender: UIBarButtonItem) {
-        let name = ActivityName.text ?? "New_Activity"
+    
+    @IBAction func SaveButton(_ sender: UIButton) {
+        let name = activity_name.text ?? "New_Activity"
         var descrip = ""
-        if Descrip != nil && Descrip.text.count > 0 {
-            descrip = Descrip.text
+        if activity_descrip != nil && activity_descrip.text.count > 0 {
+            descrip = activity_descrip.text
         }
         print(descrip)
         activity = Activity(name: name, descrip: descrip)
@@ -86,7 +88,7 @@ class CreateTaskViewController: UIViewController  {
         } else {
             os_log("Failed to save activity...", log: OSLog.default, type: .error)
         }
-
+        
     }
     
     private func addViewControllerAsChildViewController(childViewController: UIViewController) {
@@ -100,4 +102,5 @@ class CreateTaskViewController: UIViewController  {
     
     
 }
+
 

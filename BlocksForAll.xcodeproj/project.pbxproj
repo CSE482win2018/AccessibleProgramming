@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03617A192034145B003FC8FB /* CreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03617A182034145B003FC8FB /* CreateTaskViewController.swift */; };
+		03617A1B2034147F003FC8FB /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03617A1A2034147F003FC8FB /* Activity.swift */; };
 		701A43871EC26EFD00314599 /* BlocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701A43861EC26EFD00314599 /* BlocksViewController.swift */; };
-		7FAD8AD8202E989E004040F1 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAD8AD7202E989E004040F1 /* ActivityViewController.swift */; };
 		F10F71671E65BAA00049F3AA /* BlockTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10F71661E65BAA00049F3AA /* BlockTableViewController.swift */; };
 		F10F71691E65BFF50049F3AA /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10F71681E65BFF50049F3AA /* Block.swift */; };
 		F12116991EA7E0DD009976B1 /* WWRobotAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12116981EA7E0DD009976B1 /* WWRobotAPI.framework */; };
@@ -43,8 +44,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03617A182034145B003FC8FB /* CreateTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskViewController.swift; sourceTree = "<group>"; };
+		03617A1A2034147F003FC8FB /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		701A43861EC26EFD00314599 /* BlocksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlocksViewController.swift; path = ../BlocksViewController.swift; sourceTree = "<group>"; };
-		7FAD8AD7202E989E004040F1 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		F10F71661E65BAA00049F3AA /* BlockTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockTableViewController.swift; sourceTree = "<group>"; };
 		F10F71681E65BFF50049F3AA /* Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 		F10F716C1E663A520049F3AA /* BlocksForAll-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BlocksForAll-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -144,13 +146,14 @@
 			isa = PBXGroup;
 			children = (
 				701A43861EC26EFD00314599 /* BlocksViewController.swift */,
-				7FAD8AD7202E989E004040F1 /* ActivityViewController.swift */,
 				F186EB851EE0D73500C2FA4B /* SelectedBlockViewController.swift */,
 				F10F71681E65BFF50049F3AA /* Block.swift */,
 				F186EB871EE0D8B100C2FA4B /* BlockView.swift */,
 				F18FFFD21E65B4900090C4B6 /* BlockTableViewCell.swift */,
 				F13A0AE81E6B2C3E00DB4C86 /* BlocksTypeTableViewController.swift */,
 				F10F71661E65BAA00049F3AA /* BlockTableViewController.swift */,
+				03617A1A2034147F003FC8FB /* Activity.swift */,
+				03617A182034145B003FC8FB /* CreateTaskViewController.swift */,
 				F18FEEDB1EB115AF007C15B8 /* Helper */,
 			);
 			path = BlocksForAll;
@@ -226,7 +229,7 @@
 				TargetAttributes = {
 					F18FFFAE1E65B0FB0090C4B6 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 6F3U4HX6V7;
+						DevelopmentTeam = 46384CH3SR;
 						ProvisioningStyle = Automatic;
 					};
 					F18FFFC21E65B0FC0090C4B6 = {
@@ -291,11 +294,12 @@
 				F18FFFB31E65B0FB0090C4B6 /* AppDelegate.swift in Sources */,
 				F16BA3BC1F57919600A94FBA /* MainMenuViewController.swift in Sources */,
 				F121169F1EA823C8009976B1 /* RobotTableViewController.swift in Sources */,
-				7FAD8AD8202E989E004040F1 /* ActivityViewController.swift in Sources */,
 				F186EB861EE0D73500C2FA4B /* SelectedBlockViewController.swift in Sources */,
 				F10F71671E65BAA00049F3AA /* BlockTableViewController.swift in Sources */,
 				701A43871EC26EFD00314599 /* BlocksViewController.swift in Sources */,
 				F13A0AE91E6B2C3E00DB4C86 /* BlocksTypeTableViewController.swift in Sources */,
+				03617A1B2034147F003FC8FB /* Activity.swift in Sources */,
+				03617A192034145B003FC8FB /* CreateTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,7 +439,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 6F3U4HX6V7;
+				DEVELOPMENT_TEAM = 46384CH3SR;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -443,7 +447,7 @@
 				);
 				INFOPLIST_FILE = BlocksForAll/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.uw.milnel2.BlocksForAll;
+				PRODUCT_BUNDLE_IDENTIFIER = accesibility;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "BlocksForAll/BlocksForAll-Bridging-Header.h";
@@ -457,7 +461,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 6F3U4HX6V7;
+				DEVELOPMENT_TEAM = 46384CH3SR;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -465,7 +469,7 @@
 				);
 				INFOPLIST_FILE = BlocksForAll/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.uw.milnel2.BlocksForAll;
+				PRODUCT_BUNDLE_IDENTIFIER = accesibility;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "BlocksForAll/BlocksForAll-Bridging-Header.h";
