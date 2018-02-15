@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		03617A192034145B003FC8FB /* CreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03617A182034145B003FC8FB /* CreateTaskViewController.swift */; };
 		03617A1B2034147F003FC8FB /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03617A1A2034147F003FC8FB /* Activity.swift */; };
+		03617A1D2034F26A003FC8FB /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03617A1C2034F26A003FC8FB /* ActivityViewController.swift */; };
 		701A43871EC26EFD00314599 /* BlocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701A43861EC26EFD00314599 /* BlocksViewController.swift */; };
 		F10F71671E65BAA00049F3AA /* BlockTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10F71661E65BAA00049F3AA /* BlockTableViewController.swift */; };
 		F10F71691E65BFF50049F3AA /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10F71681E65BFF50049F3AA /* Block.swift */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		03617A182034145B003FC8FB /* CreateTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskViewController.swift; sourceTree = "<group>"; };
 		03617A1A2034147F003FC8FB /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		03617A1C2034F26A003FC8FB /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		701A43861EC26EFD00314599 /* BlocksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlocksViewController.swift; path = ../BlocksViewController.swift; sourceTree = "<group>"; };
 		F10F71661E65BAA00049F3AA /* BlockTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockTableViewController.swift; sourceTree = "<group>"; };
 		F10F71681E65BFF50049F3AA /* Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				F13A0AE81E6B2C3E00DB4C86 /* BlocksTypeTableViewController.swift */,
 				F10F71661E65BAA00049F3AA /* BlockTableViewController.swift */,
 				03617A1A2034147F003FC8FB /* Activity.swift */,
+				03617A1C2034F26A003FC8FB /* ActivityViewController.swift */,
 				03617A182034145B003FC8FB /* CreateTaskViewController.swift */,
 				F18FEEDB1EB115AF007C15B8 /* Helper */,
 			);
@@ -298,6 +301,7 @@
 				F10F71671E65BAA00049F3AA /* BlockTableViewController.swift in Sources */,
 				701A43871EC26EFD00314599 /* BlocksViewController.swift in Sources */,
 				F13A0AE91E6B2C3E00DB4C86 /* BlocksTypeTableViewController.swift in Sources */,
+				03617A1D2034F26A003FC8FB /* ActivityViewController.swift in Sources */,
 				03617A1B2034147F003FC8FB /* Activity.swift in Sources */,
 				03617A192034145B003FC8FB /* CreateTaskViewController.swift in Sources */,
 			);

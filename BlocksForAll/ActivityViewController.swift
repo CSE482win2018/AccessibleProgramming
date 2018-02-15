@@ -145,11 +145,11 @@ class ActivityViewController:  UIViewController, UICollectionViewDataSource, UIC
             unsetBlocks()
         }else{
             //play
-            if(blocksStack.isEmpty){
+            if(activityBlocksStack.isEmpty){
                 let announcement = "Your robot has nothing to do!  Add some blocks to your workspace. "
                 UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
             }else{
-                let commands = createCommandSequence(blocksStack)
+                let commands = createCommandSequence(activityBlocksStack)
                 //                play(commands)
             }
         }
@@ -247,7 +247,7 @@ class ActivityViewController:  UIViewController, UICollectionViewDataSource, UIC
         var announcement = ""
         dropIndex = index
         if(index != 0){
-            let myBlock = blocksStack[index-1]
+            let myBlock = activityBlocksStack[index-1]
             announcement = blocks[0].name + " placed after " + myBlock.name
         }else{
             announcement = blocks[0].name + " placed at beginning"
@@ -255,11 +255,11 @@ class ActivityViewController:  UIViewController, UICollectionViewDataSource, UIC
         UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
         //add a completion block here
         if(blocks[0].double){
-            blocksStack.insert(contentsOf: blocks, at: index)
+            activityBlocksStack.insert(contentsOf: blocks, at: index)
             blocksBeingMoved.removeAll()
             blocksProgram.reloadData()
         }else{
-            blocksStack.insert(blocks[0], at: index)
+            activityBlocksStack.insert(blocks[0], at: index)
             //NEED TO DO THIS?
             blocksBeingMoved.removeAll()
             blocksProgram.reloadData()
@@ -296,7 +296,7 @@ class ActivityViewController:  UIViewController, UICollectionViewDataSource, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return blocksStack.count + 1
+        return activityBlocksStack.count + 1
     }
     
     
@@ -305,10 +305,10 @@ class ActivityViewController:  UIViewController, UICollectionViewDataSource, UIC
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         var size = CGSize(width: CGFloat(blockWidth), height: collectionView.frame.height)
         
-        if indexPath.row == blocksStack.count {
-            if blocksStack.count < 8 {
+        if indexPath.row == activityBlocksStack.count {
+            if activityBlocksStack.count < 8 {
                 //fill up the rest of the screen
-                let myWidth = collectionView.frame.width - CGFloat(blocksStack.count) * CGFloat(blockWidth)
+                let myWidth = collectionView.frame.width - CGFloat(activityBlocksStack.count) * CGFloat(blockWidth)
                 size = CGSize(width: myWidth, height: collectionView.frame.height)
             }else{
                 //just normal size block at the end
@@ -322,8 +322,8 @@ class ActivityViewController:  UIViewController, UICollectionViewDataSource, UIC
         //TODO: if condition change accessibility label
         myLabel.isAccessibilityElement = true
         var accessibilityLabel = ""
-        //is blocksStack.count always correct?
-        var blockPlacementInfo = ". Workspace block " + String(number) + " of " + String(blocksStack.count)
+        //is activityBlocksStack.count always correct?
+        var blockPlacementInfo = ". Workspace block " + String(number) + " of " + String(activityBlocksStack.count)
         var accessibilityHint = ""
         var spearCon = ""
         var nestingInfo  = ""
@@ -391,11 +391,11 @@ class ActivityViewController:  UIViewController, UICollectionViewDataSource, UIC
             myView.removeFromSuperview()
         }
         cell.isAccessibilityElement = false
-        if indexPath.row == blocksStack.count {
+        if indexPath.row == activityBlocksStack.count {
             if !blocksBeingMoved.isEmpty{
                 cell.isAccessibilityElement = true
                 
-                if blocksStack.count == 0 {
+                if activityBlocksStack.count == 0 {
                     cell.accessibilityLabel = "Place " + blocksBeingMoved[0].name + " at Beginning"
                 }else{
                     cell.accessibilityLabel = "Place " + blocksBeingMoved[0].name + " at End"
@@ -408,15 +408,15 @@ class ActivityViewController:  UIViewController, UICollectionViewDataSource, UIC
             
             let startingHeight = Int(cell.frame.height)-blockHeight
             
-            let block = blocksStack[indexPath.row]
+            let block = activityBlocksStack[indexPath.row]
             var blocksToAdd = [Block]()
             
             //check if block is nested (or nested multiple times)
             for i in 0...indexPath.row {
-                if blocksStack[i].double {
-                    if(!blocksStack[i].name.contains("End")){
+                if activityBlocksStack[i].double {
+                    if(!activityBlocksStack[i].name.contains("End")){
                         if(i != indexPath.row){
-                            blocksToAdd.append(blocksStack[i])
+                            blocksToAdd.append(activityBlocksStack[i])
                         }
                     }else{
                         blocksToAdd.removeLast()
@@ -427,7 +427,7 @@ class ActivityViewController:  UIViewController, UICollectionViewDataSource, UIC
             if !spatialLayout {
                 blocksToAdd.reverse()
                 
-                let block = blocksStack[indexPath.row]
+                let block = activityBlocksStack[indexPath.row]
                 let myLabel = BlockView(frame: CGRect(x: 0, y: Int(cell.frame.height)-blockHeight, width: blockWidth, height: blockWidth), block: [block], myBlockWidth: blockWidth, myBlockHeight: blockHeight)
                 
                 //let myLabel = createBlock(block, withFrame: CGRect(x: 0, y: Int(cell.frame.height)-blockHeight, width: blockWidth, height: blockWidth))
@@ -470,7 +470,7 @@ class ActivityViewController:  UIViewController, UICollectionViewDataSource, UIC
                     cell.addSubview(myView)
                     count += 1
                 }
-                //let blockPlacementInfo = ". Workspace block " + String(indexPath.row + 1) + " of " + String(blocksStack.count)
+                //let blockPlacementInfo = ". Workspace block " + String(indexPath.row + 1) + " of " + String(activityBlocksStack.count)
                 
                 //var movementInfo = "Double tap to move block."
                 
@@ -527,8 +527,8 @@ class ActivityViewController:  UIViewController, UICollectionViewDataSource, UIC
                 //TODO: can only be added above conditional
                 var acceptsBooleans = false
                 var acceptsNumbers = false
-                if(indexPath.row < blocksStack.count){//otherwise empty block at end
-                    let myBlock = blocksStack[indexPath.row]
+                if(indexPath.row < activityBlocksStack.count){//otherwise empty block at end
+                    let myBlock = activityBlocksStack[indexPath.row]
                     for type in myBlock.acceptedTypes{
                         if type == "Boolean"{
                             acceptsBooleans = true
@@ -573,15 +573,15 @@ class ActivityViewController:  UIViewController, UICollectionViewDataSource, UIC
                 unsetBlocks()
             }
         }else{
-            if(indexPath.row < blocksStack.count){ //otherwise empty block at end
+            if(indexPath.row < activityBlocksStack.count){ //otherwise empty block at end
                 movingBlocks = true
                 let blocksStackIndex = indexPath.row
-                let myBlock = blocksStack[blocksStackIndex]
+                let myBlock = activityBlocksStack[blocksStackIndex]
                 //remove block from collection and program
                 if myBlock.double == true{
                     var indexOfCounterpart = -1
-                    for i in 0..<blocksStack.count {
-                        if blocksStack[i] === myBlock.counterpart! {
+                    for i in 0..<activityBlocksStack.count {
+                        if activityBlocksStack[i] === myBlock.counterpart! {
                             indexOfCounterpart = i
                         }
                     }
@@ -589,15 +589,15 @@ class ActivityViewController:  UIViewController, UICollectionViewDataSource, UIC
                     var tempBlockStack = [Block]()
                     for i in min(indexOfCounterpart, blocksStackIndex)...max(indexOfCounterpart, blocksStackIndex){
                         indexPathArray += [IndexPath.init(row: i, section: 0)]
-                        tempBlockStack += [blocksStack[i]]
+                        tempBlockStack += [activityBlocksStack[i]]
                     }
                     blocksBeingMoved = tempBlockStack
                     
-                    blocksStack.removeSubrange(min(indexOfCounterpart, blocksStackIndex)...max(indexOfCounterpart, blocksStackIndex))
+                    activityBlocksStack.removeSubrange(min(indexOfCounterpart, blocksStackIndex)...max(indexOfCounterpart, blocksStackIndex))
                     
                 }else{ //only a single block to be removed
-                    blocksBeingMoved = [blocksStack[blocksStackIndex]]
-                    blocksStack.remove(at: blocksStackIndex)
+                    blocksBeingMoved = [activityBlocksStack[blocksStackIndex]]
+                    activityBlocksStack.remove(at: blocksStackIndex)
                 }
                 blocksProgram.reloadData()
                 let mySelectedBlockVC = SelectedBlockViewController()
@@ -626,4 +626,5 @@ class ActivityViewController:  UIViewController, UICollectionViewDataSource, UIC
     
     
 }
+
 

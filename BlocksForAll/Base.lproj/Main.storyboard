@@ -499,24 +499,24 @@
                                 </connections>
                             </containerView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bM3-4l-rLl">
-                                <rect key="frame" x="163" y="0.0" width="702" height="768"/>
+                                <rect key="frame" x="163" y="0.0" width="702" height="638"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="pL3-6i-FoB">
-                                    <size key="itemSize" width="125" height="531"/>
+                                    <size key="itemSize" width="125" height="582"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BlockCell" id="Kea-bn-bOq">
-                                        <rect key="frame" x="0.0" y="118.5" width="125" height="531"/>
+                                        <rect key="frame" x="0.0" y="28" width="125" height="582"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="531"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="582"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </view>
-                                        <size key="customSize" width="125" height="531"/>
+                                        <size key="customSize" width="125" height="582"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -524,11 +524,6 @@
                                 <rect key="frame" x="873" y="0.0" width="151" height="452"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Prw-ir-svn">
-                                        <rect key="frame" x="31" y="8" width="39" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Menu"/>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="gKx-ic-XMZ">
                                         <rect key="frame" x="8" y="46" width="84" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -556,7 +551,6 @@
                     </view>
                     <connections>
                         <outlet property="blocksProgram" destination="bM3-4l-rLl" id="coB-QW-bla"/>
-                        <outlet property="menuButton" destination="Prw-ir-svn" id="V2R-td-kaD"/>
                         <outlet property="playTrashToggleButton" destination="I0w-Ey-OXn" id="9iV-Zz-yjc"/>
                         <outlet property="spatialButton" destination="gKx-ic-XMZ" id="mWO-Ij-TAu"/>
                     </connections>
@@ -760,10 +754,21 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idf-lu-Z55">
-                                        <rect key="frame" x="4" y="264" width="143" height="145"/>
+                                        <rect key="frame" x="4" y="120" width="143" height="145"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Check Answer"/>
+                                        <connections>
+                                            <action selector="checkAnswer:" destination="yvW-HD-LK6" eventType="touchUpInside" id="rBc-ZU-h0r"/>
+                                        </connections>
                                     </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Feedback" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cf5-ee-cDT">
+                                        <rect key="frame" x="4" y="273" width="139" height="328"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" red="1" green="0.2496974448682534" blue="0.15339461494957429" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MIE-l0-vfC">
@@ -783,7 +788,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="scrollIndicatorInsets" minX="20" minY="20" maxX="20" maxY="20"/>
-                                <string key="text">Your task today is to make a loud crocodile sound! To complete the activity find the crocadile sound in the bocks menu and place it in the block program, then press play to hear the crocadile roar!</string>
+                                <string key="text">Your task today is to make a loud crocodile sound! To complete the activity find the crocadile sound in the blocks menu and place it in the block program, then press play to hear the crocadile roar!</string>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -792,6 +797,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="FeedBackText" destination="cf5-ee-cDT" id="a34-Up-dbQ"/>
                         <outlet property="blocksProgram" destination="SpQ-4g-M1G" id="mUF-vX-zsL"/>
                         <outlet property="menuButton" destination="HIq-BS-Tne" id="dh7-u3-VfX"/>
                         <outlet property="playTrashToggleButton" destination="MIE-l0-vfC" id="GMa-yE-gKE"/>

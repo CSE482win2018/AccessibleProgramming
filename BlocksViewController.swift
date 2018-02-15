@@ -35,7 +35,9 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
     
     var dragOn = false
     
-    
+    var answer=["Make Crocodile Noise"]
+
+    @IBOutlet weak var FeedBackText: UITextView!
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var spatialButton: UIButton!
     
@@ -124,6 +126,7 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
             if(blocksStack.isEmpty){
                 let announcement = "Your robot has nothing to do!  Add some blocks to your workspace. "
                 UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
+                blocksProgram.reloadData()
             }else{
                 let commands = createCommandSequence(blocksStack)
                 play(commands)
@@ -596,6 +599,49 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
                 myTopViewController.delegate = self
                 myTopViewController.blockWidth = blockWidth
             }
+        }
+        
+    }
+    
+    // run code
+    @IBAction func checkAnswer(_ sender: Any) {
+        var nameArr: [String]=[]
+        for block in blocksStack{
+            nameArr.append(block.name)
+        }
+        if (nameArr.count==answer.count){
+            for i in 0..<nameArr.count{
+                if(nameArr[i] != answer[i]){
+                    print("wowowowowow")
+                    let announcement = "Im sorry thats not quite right, Please try again"
+                    makeAnnouncement(announcement)
+
+                    UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
+                    FeedBackText.text = announcement
+
+                }
+                else{
+                    print("yeaaaaaaaaa")
+                    let announcement = "Congratulations! That's correct"
+                    makeAnnouncement(announcement)
+                    UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
+                    FeedBackText.text = announcement
+
+                }
+            }
+        }
+        else{
+            let announcement = "Im sorry thats not quite right, Please try again"
+           UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
+        }
+        blocksProgram.reloadData()
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        blocksStack.removeAll()
+        if (FeedBackText != nil) {
+            FeedBackText.text = "Feedback"
         }
         
     }
