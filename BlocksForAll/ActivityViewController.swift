@@ -111,7 +111,12 @@ class ActivityViewController:  UIViewController, UICollectionViewDataSource, UIC
         for block in activityBlocksStack{
             nameArr.append(block.name)
         }
-        if (nameArr.count==answer.count){
+        if (nameArr.count==0){
+            let announcement = "You haven't picked any blocks yet, try adding some and test your answer again."
+            UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
+            return
+        }
+        else if (nameArr.count==answer.count){
             for i in 0..<nameArr.count{
                 if(nameArr[i] != answer[i]){
                     let announcement = "Im sorry thats not quite right, Please try again"
@@ -121,12 +126,14 @@ class ActivityViewController:  UIViewController, UICollectionViewDataSource, UIC
                 else{
                     let announcement = "Congratualtions! That's corret"
                     UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
+                    return
                 }
             }
         }
         else{
             let announcement = "Im sorry thats not quite right, Please try again"
             UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
+            return
         }
         
     }

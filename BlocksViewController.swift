@@ -32,7 +32,7 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
     var blockWidth = 150
     var blockHeight = 150
     let blockSpacing = 1
-    
+    var description_text="Your task today is to make a loud crocodile sound! To complete the activity find the crocadile sound in the blocks menu and place it in the block program, then press play to hear the crocadile roar!"
     var dragOn = false
     
     var answer=["Make Crocodile Noise"]
@@ -40,7 +40,7 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
     @IBOutlet weak var FeedBackText: UITextView!
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var spatialButton: UIButton!
-    
+    @IBOutlet weak var desctription_field: UITextView!
     //TODO: probably want to get rid of this
     var dropIndex = 0
     
@@ -51,7 +51,7 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
         super.viewDidLoad()
         blocksProgram.delegate = self
         blocksProgram.dataSource = self
-        
+        desctription_field.text=description_text
         //TOGGLE this off if you want to be able to access menu and spatial buttons with VO on
         /*menuButton.isAccessibilityElement = false
         menuButton.accessibilityElementsHidden = true
@@ -609,7 +609,12 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
         for block in blocksStack{
             nameArr.append(block.name)
         }
-        if (nameArr.count==answer.count){
+        if (nameArr.count==0){
+            let announcement = "You haven't picked any blocks yet, try adding some and test your answer again."
+            UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
+            
+        }
+        else if (nameArr.count==answer.count){
             for i in 0..<nameArr.count{
                 if(nameArr[i] != answer[i]){
                     print("wowowowowow")
@@ -618,7 +623,7 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
 
                     UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
                     FeedBackText.text = announcement
-
+                   
                 }
                 else{
                     print("yeaaaaaaaaa")
@@ -626,7 +631,7 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
                     makeAnnouncement(announcement)
                     UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
                     FeedBackText.text = announcement
-
+                   
                 }
             }
         }
@@ -640,9 +645,7 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
     
     override func viewDidDisappear(_ animated: Bool) {
         blocksStack.removeAll()
-        if (FeedBackText != nil) {
-            FeedBackText.text = "Feedback"
-        }
+       
         
     }
     
