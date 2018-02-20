@@ -74,8 +74,9 @@ class CreateTaskViewController: UIViewController  {
         if activity_descrip != nil && activity_descrip.text.count > 0 {
             descrip = activity_descrip.text
         }
+        let photo = activity?.photo
         print(descrip)
-        activity = Activity(name: name, descrip: descrip)
+        activity = Activity(name: name, descrip: descrip,photo: photo)
         saveActivity()
     }
     

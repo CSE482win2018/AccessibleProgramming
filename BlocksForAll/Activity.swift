@@ -16,10 +16,11 @@ class Activity: NSObject, NSCoding {
     var descrip: String?
     //    var hints: [String]?
     //    var rating: Int
-    
+    var photo: UIImage?
     struct PropertyKey {
         static let name = "name"
         static let descrip = "descrip"
+        static let photo = "photo"
     }
     
     //MARK: Archiving Paths
@@ -27,7 +28,7 @@ class Activity: NSObject, NSCoding {
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("activities")
     
     //MARK: Initialization
-    init?(name: String, descrip: String?) {
+    init?(name: String, descrip: String?,photo: UIImage?) {
         
         // The name must not be empty
         guard !name.isEmpty else {
@@ -47,7 +48,7 @@ class Activity: NSObject, NSCoding {
         // Initialize stored properties.
         self.name = name
         self.descrip = descrip
-        
+        self.photo = photo
     }
     
     //MARK: NSCoding
@@ -55,6 +56,7 @@ class Activity: NSObject, NSCoding {
         aCoder.encode(name, forKey: PropertyKey.name)
         aCoder.encode(descrip, forKey: PropertyKey.descrip)
         //        aCoder.encode(hints, forKey: PropertyKey.hints)
+        aCoder.encode(photo, forKey: PropertyKey.photo)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -67,11 +69,13 @@ class Activity: NSObject, NSCoding {
         let descrip = aDecoder.decodeObject(forKey: PropertyKey.descrip) as? String
         
         //        let hints = aDecoder.decodeObject(forKey: PropertyKey.hints) as? [String]
-        
+        let photo = aDecoder.decodeObject(forKey: PropertyKey.photo) as? UIImage
         // Must call designated initializer.
-        self.init(name: name, descrip: descrip)
+        self.init(name: name, descrip: descrip,photo: photo)
     }
+    func test(photo: UIImage = UIImage(named:"wiggle")!,descrip: String = "None"){
     
+    }
     
 }
 
