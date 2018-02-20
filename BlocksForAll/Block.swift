@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Block {
+class Block  {
     
     //MARK: Properties
     

@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		030B3F60203BDEBD00D8D596 /* ManageActivitiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030B3F5E203BDEBD00D8D596 /* ManageActivitiesTableViewController.swift */; };
+		030B3F61203BDEBD00D8D596 /* ManageActivitiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030B3F5F203BDEBD00D8D596 /* ManageActivitiesTableViewCell.swift */; };
 		03617A192034145B003FC8FB /* CreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03617A182034145B003FC8FB /* CreateTaskViewController.swift */; };
 		03617A1B2034147F003FC8FB /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03617A1A2034147F003FC8FB /* Activity.swift */; };
 		03617A1D2034F26A003FC8FB /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03617A1C2034F26A003FC8FB /* ActivityViewController.swift */; };
 		701A43871EC26EFD00314599 /* BlocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701A43861EC26EFD00314599 /* BlocksViewController.swift */; };
-		7F29F2C5203B990D00E16792 /* ManageActivitiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F29F2C4203B990D00E16792 /* ManageActivitiesTableViewCell.swift */; };
-		7F29F2C7203B9F4000E16792 /* ManageActivitiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F29F2C6203B9F4000E16792 /* ManageActivitiesTableViewController.swift */; };
 		F10F71671E65BAA00049F3AA /* BlockTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10F71661E65BAA00049F3AA /* BlockTableViewController.swift */; };
 		F10F71691E65BFF50049F3AA /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10F71681E65BFF50049F3AA /* Block.swift */; };
 		F12116991EA7E0DD009976B1 /* WWRobotAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12116981EA7E0DD009976B1 /* WWRobotAPI.framework */; };
@@ -47,12 +47,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		030B3F5E203BDEBD00D8D596 /* ManageActivitiesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageActivitiesTableViewController.swift; sourceTree = "<group>"; };
+		030B3F5F203BDEBD00D8D596 /* ManageActivitiesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageActivitiesTableViewCell.swift; sourceTree = "<group>"; };
 		03617A182034145B003FC8FB /* CreateTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskViewController.swift; sourceTree = "<group>"; };
 		03617A1A2034147F003FC8FB /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		03617A1C2034F26A003FC8FB /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		701A43861EC26EFD00314599 /* BlocksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlocksViewController.swift; path = ../BlocksViewController.swift; sourceTree = "<group>"; };
-		7F29F2C4203B990D00E16792 /* ManageActivitiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageActivitiesTableViewCell.swift; sourceTree = "<group>"; };
-		7F29F2C6203B9F4000E16792 /* ManageActivitiesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageActivitiesTableViewController.swift; sourceTree = "<group>"; };
 		F10F71661E65BAA00049F3AA /* BlockTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockTableViewController.swift; sourceTree = "<group>"; };
 		F10F71681E65BFF50049F3AA /* Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 		F10F716C1E663A520049F3AA /* BlocksForAll-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BlocksForAll-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -117,8 +117,6 @@
 			children = (
 				F1D395BA2006DBB300C6D993 /* BlocksMenus */,
 				F18FFFB61E65B0FC0090C4B6 /* Main.storyboard */,
-				7F29F2C4203B990D00E16792 /* ManageActivitiesTableViewCell.swift */,
-				7F29F2C6203B9F4000E16792 /* ManageActivitiesTableViewController.swift */,
 				F16BA3BB1F57919600A94FBA /* MainMenuViewController.swift */,
 				F121169E1EA823C8009976B1 /* RobotTableViewController.swift */,
 				F18FEEDF1EB14329007C15B8 /* RobotControlViewController.swift */,
@@ -153,6 +151,8 @@
 		F18FFFB11E65B0FB0090C4B6 /* BlocksForAll */ = {
 			isa = PBXGroup;
 			children = (
+				030B3F5F203BDEBD00D8D596 /* ManageActivitiesTableViewCell.swift */,
+				030B3F5E203BDEBD00D8D596 /* ManageActivitiesTableViewController.swift */,
 				701A43861EC26EFD00314599 /* BlocksViewController.swift */,
 				F186EB851EE0D73500C2FA4B /* SelectedBlockViewController.swift */,
 				F10F71681E65BFF50049F3AA /* Block.swift */,
@@ -301,17 +301,17 @@
 				F18FFFD31E65B4900090C4B6 /* BlockTableViewCell.swift in Sources */,
 				F10F71691E65BFF50049F3AA /* Block.swift in Sources */,
 				F18FFFB31E65B0FB0090C4B6 /* AppDelegate.swift in Sources */,
+				030B3F60203BDEBD00D8D596 /* ManageActivitiesTableViewController.swift in Sources */,
 				F16BA3BC1F57919600A94FBA /* MainMenuViewController.swift in Sources */,
+				030B3F61203BDEBD00D8D596 /* ManageActivitiesTableViewCell.swift in Sources */,
 				F121169F1EA823C8009976B1 /* RobotTableViewController.swift in Sources */,
 				F186EB861EE0D73500C2FA4B /* SelectedBlockViewController.swift in Sources */,
 				F10F71671E65BAA00049F3AA /* BlockTableViewController.swift in Sources */,
-				7F29F2C7203B9F4000E16792 /* ManageActivitiesTableViewController.swift in Sources */,
 				701A43871EC26EFD00314599 /* BlocksViewController.swift in Sources */,
 				F13A0AE91E6B2C3E00DB4C86 /* BlocksTypeTableViewController.swift in Sources */,
 				03617A1D2034F26A003FC8FB /* ActivityViewController.swift in Sources */,
 				03617A1B2034147F003FC8FB /* Activity.swift in Sources */,
 				03617A192034145B003FC8FB /* CreateTaskViewController.swift in Sources */,
-				7F29F2C5203B990D00E16792 /* ManageActivitiesTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

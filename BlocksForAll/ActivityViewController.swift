@@ -634,4 +634,3 @@ class ActivityViewController:  UIViewController, UICollectionViewDataSource, UIC
     
 }
 
-

@@ -17,10 +17,13 @@ class Activity: NSObject, NSCoding {
     //    var hints: [String]?
     //    var rating: Int
     var photo: UIImage?
+    var solutionBlocks: [Block]?
+    
     struct PropertyKey {
         static let name = "name"
         static let descrip = "descrip"
         static let photo = "photo"
+        static let solutionBlocks = "solutionBlocks"
     }
     
     //MARK: Archiving Paths
@@ -28,7 +31,7 @@ class Activity: NSObject, NSCoding {
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("activities")
     
     //MARK: Initialization
-    init?(name: String, descrip: String?,photo: UIImage?) {
+    init?(name: String, descrip: String?, photo: UIImage?, solutionBlocks: [Block]?) {
         
         // The name must not be empty
         guard !name.isEmpty else {
@@ -49,33 +52,40 @@ class Activity: NSObject, NSCoding {
         self.name = name
         self.descrip = descrip
         self.photo = photo
+        self.solutionBlocks = solutionBlocks
+        
     }
     
     //MARK: NSCoding
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: PropertyKey.name)
         aCoder.encode(descrip, forKey: PropertyKey.descrip)
-        //        aCoder.encode(hints, forKey: PropertyKey.hints)
         aCoder.encode(photo, forKey: PropertyKey.photo)
+        aCoder.encode(solutionBlocks, forKey: PropertyKey.solutionBlocks)
+        //        aCoder.encode(hints, forKey: PropertyKey.hints)
+
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
         // The name is required. If we cannot decode a name string, the initializer should fail.
         guard let name = aDecoder.decodeObject(forKey: PropertyKey.name) as? String else {
-            os_log("Unable to decode the name for a Meal object.", log: OSLog.default, type: .debug)
+            os_log("Unable to decode the name for a Activity object.", log: OSLog.default, type: .debug)
             return nil
         }
         // Because photo is an optional property of Meal, just use conditional cast.
         let descrip = aDecoder.decodeObject(forKey: PropertyKey.descrip) as? String
-        
-        //        let hints = aDecoder.decodeObject(forKey: PropertyKey.hints) as? [String]
         let photo = aDecoder.decodeObject(forKey: PropertyKey.photo) as? UIImage
+        let solutionBlocks = aDecoder.decodeObject(forKey: PropertyKey.solutionBlocks) as? [Block]
+        //        let hints = aDecoder.decodeObject(forKey: PropertyKey.hints) as? [String]
+        
         // Must call designated initializer.
-        self.init(name: name, descrip: descrip,photo: photo)
+        self.init(name: name, descrip: descrip, photo: photo, solutionBlocks: solutionBlocks)
     }
-    func test(photo: UIImage = UIImage(named:"wiggle")!,descrip: String = "None"){
     
+    func test(photo: UIImage = UIImage(named:"wiggle")!,descrip: String = "None"){
+        
     }
+    
     
 }
 

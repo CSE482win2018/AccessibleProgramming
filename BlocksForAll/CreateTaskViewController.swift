@@ -20,8 +20,18 @@ class CreateTaskViewController: UIViewController  {
     // area in instruction view
     @IBOutlet weak var instructionView: UIView!
     
+    var solutionBlocks = [Block]()
     
-    
+    var blocksViewController = BlocksViewController()
+    var solutionView: BlocksViewController = BlocksViewController()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "blocksViewController") as! BlocksViewController
+        blocksViewController = vc
+        self.blocksViewController.parentController = self
+        addViewControllerAsChildViewController(childViewController: vc)
+        print(vc.answer)
+    }
     //    lazy var instructionViewController : InstructionViewController = {
     ////        let board = UIStoryboard(name: "Main", bundle: Bundle.main)
     //        var vc = self.storyboard.instantiateViewController(withIdentifier: "InstructionViewController") as! InstructionViewController
@@ -30,16 +40,14 @@ class CreateTaskViewController: UIViewController  {
     //        return vc
     //    }()
     
-//    lazy var solutionBlocksViewController : SolutionBlocksViewController = {
+//    lazy var solutionBlocksViewController : BlocksViewController = {
 //        let board = UIStoryboard(name: "Main", bundle: Bundle.main)
-//        var vc = board.instantiateViewController(withIdentifier: "SolutionBlocksViewController") as! SolutionBlocksViewController
+//        var vc = board.instantiateViewController(withIdentifier: "SolutionBlocksViewController") as! BlocksViewController
 //        self.addViewControllerAsChildViewController(childViewController: vc)
 //        return vc
 //    }()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+//
+ 
     @IBAction func segmentedViewToggle(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
@@ -69,14 +77,16 @@ class CreateTaskViewController: UIViewController  {
     }
     
     @IBAction func SaveButton(_ sender: UIButton) {
+//        let blocksView = childViewControllers.last as! BlocksViewController
+        blocksViewController.sendDataToVc()
         let name = activity_name.text ?? "New_Activity"
         var descrip = ""
+        let photo = activity?.photo
         if activity_descrip != nil && activity_descrip.text.count > 0 {
             descrip = activity_descrip.text
         }
-        let photo = activity?.photo
         print(descrip)
-        activity = Activity(name: name, descrip: descrip,photo: photo)
+        activity = Activity(name: name, descrip: descrip, photo:photo, solutionBlocks: self.solutionBlocks)
         saveActivity()
     }
     
@@ -92,11 +102,19 @@ class CreateTaskViewController: UIViewController  {
         
     }
     
+    func getBlocks(blocks : [Block]){
+        solutionBlocks = blocks
+        if (solutionBlocks.count > 0) {
+            os_log("Solution Blocks successfully got.", log: OSLog.default, type: .debug)
+        }
+    }
+
+    
     private func addViewControllerAsChildViewController(childViewController: UIViewController) {
         addChildViewController(childViewController)
-        view.addSubview(childViewController.view)
-        childViewController.view.frame = view.bounds
-        childViewController.view.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+//        view.addSubview(childViewController.view)
+//        childViewController.view.frame = view.bounds
+//        childViewController.view.autoresizingMask = [.flexibleWidth,.flexibleHeight]
         childViewController.didMove(toParentViewController: self)
     }
     

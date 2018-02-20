@@ -99,7 +99,7 @@ class ManageActivitiesTableViewController: UITableViewController {
     private func loadSampleActivities() {
         let photo1 = UIImage(named: "wiggle")
         let longString = "Your task today is to make a loud crocodile sound! To complete the activity find the crocadile sound in the blocks menu and place it in the block program, then press play to hear the crocadile roar!"
-        guard let act1=Activity(name: "Croc", descrip: longString, photo: photo1!) else{
+        guard let act1=Activity(name: "Croc", descrip: longString, photo: photo1!, solutionBlocks: []) else{
             fatalError("Unable to Load Activity")
         }
         activities+=[act1]
