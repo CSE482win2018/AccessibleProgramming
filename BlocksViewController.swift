@@ -35,7 +35,7 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
     var blockHeight = 150
     let blockSpacing = 1
     
-    var description_text="Your task today is to make a loud crocodile sound! To complete the activity find the crocadile sound in the blocks menu and place it in the block program, then press play to hear the crocadile roar!"
+    var description_text="Your task today is to make a loud crocodile sound! To complete the activity find the crocodile sound in the blocks menu and place it in the block program, then press play to hear the crocodile roar!"
 
     var dragOn = false
     
@@ -622,7 +622,7 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
         else if (nameArr.count==answer.count){
             for i in 0..<nameArr.count{
                 if(nameArr[i] != answer[i]){
-                    let announcement = "Im sorry thats not quite right, Please try again"
+                    let announcement = "I'm sorry that's not quite right. Please try again"
                     FeedBackText.text = announcement
 
                     UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
@@ -640,7 +640,7 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
             }
         }
         else{
-            let announcement = "Im sorry thats not quite right, Please try again"
+            let announcement = "I'm sorry that's not quite right. Please try again"
            UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
             return
         }
