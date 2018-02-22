@@ -7,16 +7,31 @@
 //
 
 import UIKit
+import os.log
 
 class ManageActivitiesTableViewController: UITableViewController {
     //MARK: Properties
     
     var activities=[Activity]()
+    var parentController = ListViewController?.self
+    var selectedIndex = 0;
+    var mmm = 1
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadSampleActivities()
-       
+        // Load any saved meals, otherwise load sample data.
+        if let savedActivities = loadActivities() {
+            activities += savedActivities
+        }
+        else {
+            // Load the sample data.
+//            loadSampleActivities()
+        }
     }
+//    func setParent(segue: UIStoryboardSegue) {
+//        if (segue.identifier == "ListToTable") {
+//            parentController = segue.source as? ListViewController
+//        }
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -49,6 +64,10 @@ class ManageActivitiesTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedIndex = indexPath.row
+        performSegue(withIdentifier: "editActivity", sender: self)
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -85,24 +104,68 @@ class ManageActivitiesTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
+    
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        switch (segue.identifier ?? "") {
+        case "editActivity":
+            let ctvc = segue.destination as! CreateTaskViewController
+            ctvc.activity = activities[selectedIndex]
+            break
+        default:
+            break
+        }
     }
-    */
+   
+    
+    //MARK: Actions
+    
+     func unwindToActivityList(sender: UIStoryboardSegue) {
+        if let createTaskViewController = sender.source as? CreateTaskViewController, let activity = createTaskViewController.activity {
+            print(activity.name)
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                // Update an existing meal.
+                activities[selectedIndexPath.row] = activity
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            }
+            else {
+                // Add a new meal.
+                let newIndexPath = IndexPath(row: activities.count, section: 0)
+                
+                activities.append(activity)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+            
+            // Save the meals.
+            saveActivities()
+        }
+    }
     //MARK: Private Methods
     
-    private func loadSampleActivities() {
-        let photo1 = UIImage(named: "wiggle")
-        let longString = "Your task today is to make a loud crocodile sound! To complete the activity find the crocodile sound in the blocks menu and place it in the block program, then press play to hear the crocodile roar!"
-        guard let act1=Activity(name: "Croc", descrip: longString, photo: photo1!, solutionBlocks: []) else{
-            fatalError("Unable to Load Activity")
+//    private func loadSampleActivities() {
+//        let photo1 = UIImage(named: "wiggle")
+//        let longString = "Your task today is to make a loud crocodile sound! To complete the activity find the crocadile sound in the blocks menu and place it in the block program, then press play to hear the crocadile roar!"
+//        guard let act1=Activity(name: "Croc", descrip: longString, photo: photo1!, solutionBlocksName: ["Make Crocodile Noise"]) else{
+//            fatalError("Unable to Load Activity")
+//        }
+//        activities+=[act1]
+//    }
+    
+    private func saveActivities() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(activities, toFile: Activity.ArchiveURL.path)
+        if isSuccessfulSave {
+            os_log("Activities successfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save Activities...", log: OSLog.default, type: .error)
         }
-        activities+=[act1]
     }
+    
+    private func loadActivities() -> [Activity]?  {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Activity.ArchiveURL.path) as? [Activity]
+    }
+
     
 }

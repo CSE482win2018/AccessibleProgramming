@@ -118,14 +118,14 @@ class BlockTableViewController: UITableViewController {
         if let myDestination = segue.destination as? SelectedBlockViewController{
             //copy to ensure that you get a new id for each block
             let b2 = tableView.cellForRow(at: tableView.indexPathForSelectedRow!)
-            var block = blocks[(tableView.indexPathForSelectedRow?.row)!].copy()
+            var block = blocks[(tableView.indexPathForSelectedRow?.row)!].copy(fake:0)
             for myView in (b2?.subviews)!{
                 if let myBlockView = myView as? BlockView{
-                    block = myBlockView.blocks[0].copy()
+                    block = myBlockView.blocks[0].copy(fake:0)
                 }
             }
 
-            //let block = blocks[(tableView.indexPathForSelectedRow?.row)!].copy()
+            //let block = blocks[(tableView.indexPathForSelectedRow?.row)!].copy(fake:0)
             if block.double{
                 let endBlockName = "End " + block.name
                 let endBlock = Block(name: endBlockName, color: block.color, double: true, editable: false)
