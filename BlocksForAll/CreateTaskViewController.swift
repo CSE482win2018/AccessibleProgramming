@@ -68,7 +68,7 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
     var audioRecorder: AVAudioRecorder?
     
     var solutionBlocksName = [Block]()
-    
+    var audioFileName :String!
     var blocksViewController = BlocksViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,7 +87,7 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
         
         let dirPaths = fileMgr.urls(for: .documentDirectory,
                                     in: .userDomainMask)
-        let audioFileName = randomAlphaNumericString(length: 11)+".caf"
+        audioFileName = randomAlphaNumericString(length: 11)+".caf"
         let soundFileURL = dirPaths[0].appendingPathComponent(audioFileName)
         
         let recordSettings =

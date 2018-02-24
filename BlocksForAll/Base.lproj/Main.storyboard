@@ -230,6 +230,13 @@
                                             <action selector="recordAudio:" destination="lNT-ru-Aar" eventType="touchUpInside" id="T2D-cM-TKH"/>
                                         </connections>
                                     </button>
+                                    <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y6e-Vs-rOF">
+                                        <rect key="frame" x="621" y="77" width="352" height="489"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <connections>
+                                            <segue destination="f2V-yN-Qb0" kind="embed" id="prQ-qL-xIo"/>
+                                        </connections>
+                                    </containerView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.23378405159999999" green="0.69958306349999999" blue="0.499968368" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -333,7 +340,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TLJ-en-O8e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-328.125" y="785.9375"/>
+            <point key="canvasLocation" x="-328.125" y="785.15625"/>
         </scene>
         <!--Robot Table View Controller-->
         <scene sceneID="c6j-qc-ZGN">
@@ -1115,6 +1122,65 @@
             </objects>
             <point key="canvasLocation" x="-1269" y="1242"/>
         </scene>
+        <!--Manage Hints Table View Controller-->
+        <scene sceneID="PUB-jN-Pnd">
+            <objects>
+                <tableViewController id="f2V-yN-Qb0" customClass="ManageHintsTableViewController" customModule="BlocksForAll" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bsN-aW-C2B">
+                        <rect key="frame" x="0.0" y="0.0" width="352" height="489"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="PPj-oR-efy" customClass="ManageHintsTableViewCell" customModule="BlocksForAll" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="352" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PPj-oR-efy" id="2fD-H1-qHz">
+                                    <rect key="frame" x="0.0" y="0.0" width="352" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CRv-rF-G8a">
+                                            <rect key="frame" x="20" y="11" width="159" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cjq-a5-KUs">
+                                            <rect key="frame" x="187" y="11" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Rec"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71m-Ma-KNu">
+                                            <rect key="frame" x="231" y="11" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <accessibility key="accessibilityConfiguration" label="Stop Button"/>
+                                            <state key="normal" title="Stop"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80w-dE-YlC">
+                                            <rect key="frame" x="285" y="11" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Play"/>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="hintText" destination="CRv-rF-G8a" id="ebv-3R-pvr"/>
+                                    <outlet property="playButton" destination="80w-dE-YlC" id="Eq9-Jl-1k5"/>
+                                    <outlet property="recordButton" destination="Cjq-a5-KUs" id="Xws-Iu-8zx"/>
+                                    <outlet property="stopButton" destination="71m-Ma-KNu" id="K3b-yU-Q6d"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="f2V-yN-Qb0" id="eyA-CV-AK5"/>
+                            <outlet property="delegate" destination="f2V-yN-Qb0" id="a6E-Oh-Nvp"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lue-1V-tP6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="325.78125" y="1029.6875"/>
+        </scene>
         <!--Manage Activities Table View Controller-->
         <scene sceneID="XuQ-5y-LLn">
             <objects>
@@ -1170,7 +1236,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cm6-Im-Mqz"/>
-        <segue reference="K1M-0W-nf3"/>
+        <segue reference="v8X-OA-NLZ"/>
         <segue reference="SwJ-uT-SUQ"/>
     </inferredMetricsTieBreakers>
 </document>

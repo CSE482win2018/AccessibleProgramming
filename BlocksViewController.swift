@@ -625,7 +625,7 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
         else if (nameArr.count==answer.count){
             for i in 0..<nameArr.count{
                 if(nameArr[i] != answer[i]){
-                    let announcement = "Im sorry thats not quite right, Please try again"
+                    let announcement = "Im sorry thats not quite right, at least block "+String(i)+" is not correct."
                     FeedBackText.text = announcement
 
                     UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
