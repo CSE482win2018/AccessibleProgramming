@@ -188,9 +188,6 @@
                                         <state key="normal" title="Stop">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="stopAudio:" destination="lNT-ru-Aar" eventType="touchUpInside" id="uAc-wM-Msc"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mD4-2a-h6v">
                                         <rect key="frame" x="407" y="286" width="113" height="66"/>
@@ -199,9 +196,6 @@
                                         <state key="normal" title="Play">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="playAudio:" destination="lNT-ru-Aar" eventType="touchUpInside" id="mIk-P1-KJy"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcN-V5-jsb">
                                         <rect key="frame" x="407" y="77" width="113" height="66"/>
@@ -210,9 +204,6 @@
                                         <state key="normal" title="Record">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="recordAudio:" destination="lNT-ru-Aar" eventType="touchUpInside" id="X57-Qx-Cef"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.23378405159999999" green="0.69958306349999999" blue="0.499968368" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1108,7 +1099,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cm6-Im-Mqz"/>
-        <segue reference="v8X-OA-NLZ"/>
+        <segue reference="VnX-Oo-KZz"/>
         <segue reference="SwJ-uT-SUQ"/>
     </inferredMetricsTieBreakers>
 </document>
