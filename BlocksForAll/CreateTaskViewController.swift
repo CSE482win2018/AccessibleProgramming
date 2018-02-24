@@ -5,11 +5,11 @@
 //  Created by Kathryn Chan on 01/02/2018.
 //  Copyright © 2018 Lauren Milne. All rights reserved.
 //
-
+import AVFoundation
 import UIKit
 import os.log
 
-class CreateTaskViewController: UIViewController  {
+class CreateTaskViewController: UIViewController {
     var activity: Activity?
     
     @IBOutlet weak var blocksView: UIView!
@@ -19,6 +19,13 @@ class CreateTaskViewController: UIViewController  {
     @IBOutlet weak var activity_descrip: UITextView!
     // area in instruction view
     @IBOutlet weak var instructionView: UIView!
+    
+   
+    @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var stopButton: UIButton!
+    @IBOutlet weak var playButton: UIButton!
+    //var audioPlayer: AVAudioPlayer?
+    //var audioRecorder: AVAudioRecorder?
     
     var solutionBlocksName = [Block]()
     
@@ -32,10 +39,49 @@ class CreateTaskViewController: UIViewController  {
         if (activity != nil) {
             reloadActivity()
         }
+        /*
+        playButton.isEnabled = false
+        stopButton.isEnabled = false
         
+        let fileMgr = FileManager.default
         
+        let dirPaths = fileMgr.urls(for: .documentDirectory,
+                                    in: .userDomainMask)
+        
+        let soundFileURL = dirPaths[0].appendingPathComponent("sound.caf")
+        
+        let recordSettings =
+            [AVEncoderAudioQualityKey: AVAudioQuality.min.rawValue,
+             AVEncoderBitRateKey: 16,
+             AVNumberOfChannelsKey: 2,
+             AVSampleRateKey: 44100.0] as [String : Any]
+        
+        let audioSession = AVAudioSession.sharedInstance()
+        
+        do {
+            try audioSession.setCategory(
+                AVAudioSessionCategoryPlayAndRecord)
+        } catch let error as NSError {
+            print("audioSession error: \(error.localizedDescription)")
+        }
+        
+        do {
+            try audioRecorder = AVAudioRecorder(url: soundFileURL,
+                                                settings: recordSettings as [String : AnyObject])
+            audioRecorder?.prepareToRecord()
+        } catch let error as NSError {
+            print("audioSession error: \(error.localizedDescription)")
+        }
+ */
+    }
+  
+
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
     }
     
+   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         switch (segue.identifier ?? "") {
@@ -144,9 +190,61 @@ class CreateTaskViewController: UIViewController  {
 //        childViewController.view.autoresizingMask = [.flexibleWidth,.flexibleHeight]
         childViewController.didMove(toParentViewController: self)
     }
+    //audio recorder stuff
+    /*
+    @IBAction func recordAudio(_ sender: AnyObject) {
+        if audioRecorder?.isRecording == false {
+            playButton.isEnabled = false
+            stopButton.isEnabled = true
+            audioRecorder?.record()
+        }
+    }
     
+    @IBAction func stopAudio(_ sender: AnyObject) {
+        stopButton.isEnabled = false
+        playButton.isEnabled = true
+        recordButton.isEnabled = true
+        
+        if audioRecorder?.isRecording == true {
+            audioRecorder?.stop()
+        } else {
+            audioPlayer?.stop()
+        }
+    }
     
+    @IBAction func playAudio(_ sender: AnyObject) {
+        if audioRecorder?.isRecording == false {
+            stopButton.isEnabled = true
+            recordButton.isEnabled = false
+            
+            do {
+                try audioPlayer = AVAudioPlayer(contentsOf:
+                    (audioRecorder?.url)!)
+                audioPlayer!.delegate = self
+                audioPlayer!.prepareToPlay()
+                audioPlayer!.play()
+            } catch let error as NSError {
+                print("audioPlayer error: \(error.localizedDescription)")
+            }
+        }
+    }
     
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        recordButton.isEnabled = true
+        stopButton.isEnabled = false
+    }
+    
+    func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
+        print("Audio Play Decode Error")
+    }
+    
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+    }
+    
+    func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
+        print("Audio Record Encode Error")
+    }
+ */
 }
 
 

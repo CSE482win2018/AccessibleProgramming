@@ -47,18 +47,6 @@
                                     <segue destination="yvW-HD-LK6" kind="show" id="Boo-wa-acS"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TPR-RY-V0y">
-                                <rect key="frame" x="158" y="349" width="286" height="101"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <state key="normal" title="Create Activity">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="lNT-ru-Aar" kind="show" identifier="CreateTaskSegue" id="xlT-xy-8vb"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTZ-V4-iim">
                                 <rect key="frame" x="158" y="474" width="286" height="101"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -103,6 +91,18 @@
                                 </state>
                                 <connections>
                                     <segue destination="uoc-nU-c4a" kind="show" id="Tjn-hR-3fo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TPR-RY-V0y">
+                                <rect key="frame" x="158" y="360" width="286" height="101"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <state key="normal" title="Create Activity">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="lNT-ru-Aar" kind="show" id="VnX-Oo-KZz"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -181,6 +181,39 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EDy-7W-SeS">
+                                        <rect key="frame" x="407" y="180" width="113" height="66"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.24969744490000001" blue="0.1533946149" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Stop">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="stopAudio:" destination="lNT-ru-Aar" eventType="touchUpInside" id="uAc-wM-Msc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mD4-2a-h6v">
+                                        <rect key="frame" x="407" y="286" width="113" height="66"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.24969744490000001" blue="0.1533946149" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Play">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="playAudio:" destination="lNT-ru-Aar" eventType="touchUpInside" id="mIk-P1-KJy"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcN-V5-jsb">
+                                        <rect key="frame" x="407" y="77" width="113" height="66"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.24969744490000001" blue="0.1533946149" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Record">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="recordAudio:" destination="lNT-ru-Aar" eventType="touchUpInside" id="X57-Qx-Cef"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.23378405159999999" green="0.69958306349999999" blue="0.499968368" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -225,15 +258,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
+                        <outlet property="Play" destination="66o-En-ARB" id="8RW-c3-z4y"/>
+                        <outlet property="Record" destination="66o-En-ARB" id="jNP-hs-hvV"/>
                         <outlet property="activity_descrip" destination="XcV-bA-r83" id="J2D-Pq-p9o"/>
                         <outlet property="activity_name" destination="mKS-IF-FT5" id="hMu-8z-Kna"/>
                         <outlet property="blocksView" destination="az7-dc-rfs" id="KpQ-Eb-jcl"/>
                         <outlet property="instructionView" destination="MKz-Pj-EOq" id="crY-o1-evg"/>
+                        <outlet property="play" destination="mD4-2a-h6v" id="Sme-qi-x41"/>
+                        <outlet property="record" destination="wcN-V5-jsb" id="Udc-M6-MMq"/>
+                        <outlet property="stop" destination="EDy-7W-SeS" id="RlC-d7-o9f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TLJ-en-O8e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-328" y="787"/>
+            <point key="canvasLocation" x="-328.125" y="786.328125"/>
         </scene>
         <!--Robot Table View Controller-->
         <scene sceneID="c6j-qc-ZGN">
@@ -1070,7 +1108,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cm6-Im-Mqz"/>
-        <segue reference="7iB-dr-bDT"/>
-        <segue reference="FAp-gd-0H0"/>
+        <segue reference="v8X-OA-NLZ"/>
+        <segue reference="SwJ-uT-SUQ"/>
     </inferredMetricsTieBreakers>
 </document>

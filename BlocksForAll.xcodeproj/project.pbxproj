@@ -14,6 +14,7 @@
 		03617A1D2034F26A003FC8FB /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03617A1C2034F26A003FC8FB /* ActivityViewController.swift */; };
 		03F7FF80203E12DA00F1820A /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7FF7F203E12DA00F1820A /* ListViewController.swift */; };
 		701A43871EC26EFD00314599 /* BlocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701A43861EC26EFD00314599 /* BlocksViewController.swift */; };
+		7FC71428203FABD2009E327B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC71427203FABD2009E327B /* AVFoundation.framework */; };
 		F10F71671E65BAA00049F3AA /* BlockTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10F71661E65BAA00049F3AA /* BlockTableViewController.swift */; };
 		F10F71691E65BFF50049F3AA /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10F71681E65BFF50049F3AA /* Block.swift */; };
 		F12116991EA7E0DD009976B1 /* WWRobotAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12116981EA7E0DD009976B1 /* WWRobotAPI.framework */; };
@@ -55,6 +56,8 @@
 		03617A1C2034F26A003FC8FB /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		03F7FF7F203E12DA00F1820A /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		701A43861EC26EFD00314599 /* BlocksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlocksViewController.swift; path = ../BlocksViewController.swift; sourceTree = "<group>"; };
+		7F6B77D4204087BA003D52FA /* BlocksForAll.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BlocksForAll.entitlements; sourceTree = "<group>"; };
+		7FC71427203FABD2009E327B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F10F71661E65BAA00049F3AA /* BlockTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockTableViewController.swift; sourceTree = "<group>"; };
 		F10F71681E65BFF50049F3AA /* Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 		F10F716C1E663A520049F3AA /* BlocksForAll-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BlocksForAll-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -88,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FC71428203FABD2009E327B /* AVFoundation.framework in Frameworks */,
 				F121169D1EA7E1D5009976B1 /* libc++.tbd in Frameworks */,
 				F121169B1EA7E153009976B1 /* CoreBluetooth.framework in Frameworks */,
 				F12116991EA7E0DD009976B1 /* WWRobotAPI.framework in Frameworks */,
@@ -107,6 +111,7 @@
 		F12116971EA7E0DA009976B1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7FC71427203FABD2009E327B /* AVFoundation.framework */,
 				F121169C1EA7E1D5009976B1 /* libc++.tbd */,
 				F121169A1EA7E153009976B1 /* CoreBluetooth.framework */,
 				F12116981EA7E0DD009976B1 /* WWRobotAPI.framework */,
@@ -153,6 +158,7 @@
 		F18FFFB11E65B0FB0090C4B6 /* BlocksForAll */ = {
 			isa = PBXGroup;
 			children = (
+				7F6B77D4204087BA003D52FA /* BlocksForAll.entitlements */,
 				030B3F5F203BDEBD00D8D596 /* ManageActivitiesTableViewCell.swift */,
 				030B3F5E203BDEBD00D8D596 /* ManageActivitiesTableViewController.swift */,
 				701A43861EC26EFD00314599 /* BlocksViewController.swift */,
@@ -241,8 +247,13 @@
 				TargetAttributes = {
 					F18FFFAE1E65B0FB0090C4B6 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 46384CH3SR;
+						DevelopmentTeam = R9G4L7NLF4;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InterAppAudio = {
+								enabled = 0;
+							};
+						};
 					};
 					F18FFFC21E65B0FC0090C4B6 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -455,7 +466,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 46384CH3SR;
+				DEVELOPMENT_TEAM = R9G4L7NLF4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -463,7 +474,7 @@
 				);
 				INFOPLIST_FILE = BlocksForAll/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = accesibility;
+				PRODUCT_BUNDLE_IDENTIFIER = accesibilityAD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "BlocksForAll/BlocksForAll-Bridging-Header.h";
@@ -477,7 +488,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 46384CH3SR;
+				DEVELOPMENT_TEAM = R9G4L7NLF4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -485,7 +496,7 @@
 				);
 				INFOPLIST_FILE = BlocksForAll/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = accesibility;
+				PRODUCT_BUNDLE_IDENTIFIER = accesibilityAD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "BlocksForAll/BlocksForAll-Bridging-Header.h";
