@@ -65,7 +65,6 @@ class Activity: NSObject, NSCoding {
         aCoder.encode(photo, forKey: PropertyKey.photo)
         aCoder.encode(solutionBlocksName, forKey: PropertyKey.solutionBlocksName)
         aCoder.encode(startBlocks, forKey: PropertyKey.startBlocks)
-        print(solutionBlocksName[0].name)
 
         //        aCoder.encode(hints, forKey: PropertyKey.hints)
 
