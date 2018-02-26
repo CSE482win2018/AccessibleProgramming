@@ -166,6 +166,49 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Activity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bhx-nf-jiG">
+                                <rect key="frame" x="495" y="23" width="112" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0q-a6-Vkp">
+                                <rect key="frame" x="902" y="23" width="54" height="30"/>
+                                <state key="normal" title="Preview"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GcX-20-bXE">
+                                <rect key="frame" x="964" y="23" width="51" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="51" id="6lt-5P-Ght"/>
+                                </constraints>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="DoneButton:" destination="lNT-ru-Aar" eventType="touchUpInside" id="Dy0-YZ-2vO"/>
+                                    <segue destination="hyM-6u-e2b" kind="show" identifier="SaveSegue" id="cm6-Im-Mqz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OF6-xn-rdg">
+                                <rect key="frame" x="848" y="23" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="aVj-W2-41b"/>
+                                </constraints>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="SaveButton:" destination="lNT-ru-Aar" eventType="touchUpInside" id="L4W-ad-G8a"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cGm-n5-PxT">
+                                <rect key="frame" x="27" y="50" width="91" height="47"/>
+                                <color key="backgroundColor" red="0.23378405159999999" green="0.69958306349999999" blue="0.499968368" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="FFI-Pe-JE8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Menu"/>
+                                <connections>
+                                    <segue destination="YEE-PZ-SjD" kind="show" identifier="MenuSegue" id="SwJ-uT-SUQ"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MKz-Pj-EOq">
                                 <rect key="frame" x="0.0" y="126" width="1024" height="642"/>
                                 <subviews>
@@ -256,49 +299,6 @@
                                     <constraint firstItem="wcN-V5-jsb" firstAttribute="leading" secondItem="XcV-bA-r83" secondAttribute="trailing" constant="52" id="xaT-ca-jM8"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Activity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bhx-nf-jiG">
-                                <rect key="frame" x="495" y="23" width="112" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0q-a6-Vkp">
-                                <rect key="frame" x="902" y="23" width="54" height="30"/>
-                                <state key="normal" title="Preview"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GcX-20-bXE">
-                                <rect key="frame" x="964" y="23" width="51" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="51" id="6lt-5P-Ght"/>
-                                </constraints>
-                                <state key="normal" title="Done"/>
-                                <connections>
-                                    <action selector="DoneButton:" destination="lNT-ru-Aar" eventType="touchUpInside" id="Dy0-YZ-2vO"/>
-                                    <segue destination="hyM-6u-e2b" kind="show" identifier="SaveSegue" id="cm6-Im-Mqz"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OF6-xn-rdg">
-                                <rect key="frame" x="848" y="23" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="aVj-W2-41b"/>
-                                </constraints>
-                                <state key="normal" title="Save"/>
-                                <connections>
-                                    <action selector="SaveButton:" destination="lNT-ru-Aar" eventType="touchUpInside" id="L4W-ad-G8a"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cGm-n5-PxT">
-                                <rect key="frame" x="27" y="50" width="91" height="47"/>
-                                <color key="backgroundColor" red="0.23378405159999999" green="0.69958306349999999" blue="0.499968368" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="FFI-Pe-JE8"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Menu"/>
-                                <connections>
-                                    <segue destination="YEE-PZ-SjD" kind="show" identifier="MenuSegue" id="SwJ-uT-SUQ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -332,6 +332,7 @@
                         <outlet property="activity_descrip" destination="XcV-bA-r83" id="J2D-Pq-p9o"/>
                         <outlet property="activity_name" destination="mKS-IF-FT5" id="hMu-8z-Kna"/>
                         <outlet property="blocksView" destination="az7-dc-rfs" id="KpQ-Eb-jcl"/>
+                        <outlet property="hintsView" destination="Y6e-Vs-rOF" id="Grn-Ln-h2E"/>
                         <outlet property="instructionView" destination="MKz-Pj-EOq" id="crY-o1-evg"/>
                         <outlet property="playButton" destination="mD4-2a-h6v" id="Vum-tV-BhG"/>
                         <outlet property="recordButton" destination="wcN-V5-jsb" id="Pwo-Wb-EqX"/>
@@ -1130,40 +1131,84 @@
                         <rect key="frame" x="0.0" y="0.0" width="352" height="489"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="ul0-9n-cmQ">
+                            <rect key="frame" x="0.0" y="0.0" width="352" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JsE-qk-8fW">
+                                    <rect key="frame" x="0.0" y="-5" width="352" height="56"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xOC-h6-WLm">
+                                            <rect key="frame" x="24" y="13" width="167" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.24710881034024387" green="0.93758095854922274" blue="0.91593716390415347" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <accessibility key="accessibilityConfiguration" label="Create New Hint"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <state key="normal" title="Create New Hint"/>
+                                            <connections>
+                                                <action selector="addNewhint:" destination="f2V-yN-Qb0" eventType="touchUpInside" id="1SM-ZU-eM5"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="PPj-oR-efy" customClass="ManageHintsTableViewCell" customModule="BlocksForAll" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="352" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ManageHintsTableViewCell" id="PPj-oR-efy" customClass="ManageHintsTableViewCell" customModule="BlocksForAll" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="352" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PPj-oR-efy" id="2fD-H1-qHz">
                                     <rect key="frame" x="0.0" y="0.0" width="352" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CRv-rF-G8a">
-                                            <rect key="frame" x="20" y="11" width="159" height="30"/>
+                                            <rect key="frame" x="0.0" y="11" width="159" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cjq-a5-KUs">
-                                            <rect key="frame" x="187" y="11" width="46" height="30"/>
+                                            <rect key="frame" x="160" y="10" width="46" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Rec"/>
+                                            <connections>
+                                                <action selector="recordAudio:" destination="PPj-oR-efy" eventType="touchUpInside" id="Kih-gR-U7n"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71m-Ma-KNu">
-                                            <rect key="frame" x="231" y="11" width="46" height="30"/>
+                                            <rect key="frame" x="202" y="10" width="46" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <accessibility key="accessibilityConfiguration" label="Stop Button"/>
                                             <state key="normal" title="Stop"/>
+                                            <connections>
+                                                <action selector="stopAudio:" destination="PPj-oR-efy" eventType="touchUpInside" id="UdN-3a-IkM"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80w-dE-YlC">
-                                            <rect key="frame" x="285" y="11" width="46" height="30"/>
+                                            <rect key="frame" x="248" y="10" width="46" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Play"/>
+                                            <connections>
+                                                <action selector="playAudio:" destination="PPj-oR-efy" eventType="touchUpInside" id="4g8-Yp-qx2"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iWc-Rv-fNX">
+                                            <rect key="frame" x="295" y="10" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <accessibility key="accessibilityConfiguration" label="Delete"/>
+                                            <state key="normal" title="Delete"/>
+                                            <connections>
+                                                <action selector="deleteHint:" destination="PPj-oR-efy" eventType="touchUpInside" id="PEP-WE-oNE"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="deleteButton" destination="iWc-Rv-fNX" id="zBF-Dx-hIw"/>
                                     <outlet property="hintText" destination="CRv-rF-G8a" id="ebv-3R-pvr"/>
                                     <outlet property="playButton" destination="80w-dE-YlC" id="Eq9-Jl-1k5"/>
                                     <outlet property="recordButton" destination="Cjq-a5-KUs" id="Xws-Iu-8zx"/>
@@ -1176,10 +1221,13 @@
                             <outlet property="delegate" destination="f2V-yN-Qb0" id="a6E-Oh-Nvp"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="addNewHintButton" destination="xOC-h6-WLm" id="cYg-sz-Zfd"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lue-1V-tP6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="325.78125" y="1029.6875"/>
+            <point key="canvasLocation" x="569.53125" y="1046.484375"/>
         </scene>
         <!--Manage Activities Table View Controller-->
         <scene sceneID="XuQ-5y-LLn">
@@ -1237,6 +1285,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="cm6-Im-Mqz"/>
         <segue reference="v8X-OA-NLZ"/>
-        <segue reference="SwJ-uT-SUQ"/>
+        <segue reference="9ef-mK-bIt"/>
     </inferredMetricsTieBreakers>
 </document>

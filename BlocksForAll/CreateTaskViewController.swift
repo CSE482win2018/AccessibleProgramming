@@ -14,6 +14,7 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
     
     @IBOutlet weak var blocksView: UIView!
     
+    @IBOutlet weak var hintsView: UIView!
     @IBOutlet weak var activity_name: UITextField!
     
     @IBOutlet weak var activity_descrip: UITextView!
@@ -23,9 +24,6 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
-    
-    
-    
     
     @IBAction func recordAudio(_ sender: Any) {
         if audioRecorder?.isRecording == false {

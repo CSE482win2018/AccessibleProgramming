@@ -9,7 +9,16 @@
 import UIKit
 
 class ManageHintsTableViewController: UITableViewController {
-
+    var hints:[String]=[]
+    
+    @IBOutlet weak var addNewHintButton: UIButton!
+    @IBAction func addNewhint(_ sender: Any) {
+        print("in here")
+        
+        hints.append("AddHint")
+        tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,6 +27,7 @@ class ManageHintsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        print("TableViewLoaded")
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,24 +38,35 @@ class ManageHintsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        
+        return 1
     }
-
+    func deleteCell(cell: ManageHintsTableViewCell){
+        if let deletionIndexPath = tableView.indexPath(for: cell){
+            hints.remove(at: deletionIndexPath.row)
+            tableView.deleteRows(at:[deletionIndexPath], with: .automatic)
+        }
+        
+    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return hints.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        let cellIdentifier = "ManageHintsTableViewCell"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ManageHintsTableViewCell else{
+                fatalError("dequed cell was not a hint")
+            }
+        
+        //let hint = hints[indexPath.row]
         // Configure the cell...
-
+        //cell.hintText.text=hint
+       
+        cell.viewController=self
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
