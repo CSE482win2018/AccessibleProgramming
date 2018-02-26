@@ -18,13 +18,14 @@ class Activity: NSObject, NSCoding {
     //    var rating: Int
     var photo: UIImage?
     var solutionBlocksName: [Block]
+    var startBlocks: [Block]
     
     struct PropertyKey {
         static let name = "name"
         static let descrip = "descrip"
         static let photo = "photo"
         static let solutionBlocksName = "solutionBlocksName"
-
+        static let startBlocks = "startBlocks"
     }
     
     //MARK: Archiving Paths
@@ -32,7 +33,7 @@ class Activity: NSObject, NSCoding {
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("activities")
     
     //MARK: Initialization
-    init?(name: String, descrip: String?, photo: UIImage?, solutionBlocksName: [Block]?) {
+    init?(name: String, descrip: String?, photo: UIImage?, solutionBlocksName: [Block]?, startBlocks: [Block]?) {
         
         // The name must not be empty
         guard !name.isEmpty else {
@@ -54,7 +55,7 @@ class Activity: NSObject, NSCoding {
         self.descrip = descrip
         self.photo = photo
         self.solutionBlocksName = solutionBlocksName!
-        
+        self.startBlocks = startBlocks!
     }
     
     //MARK: NSCoding
@@ -63,6 +64,7 @@ class Activity: NSObject, NSCoding {
         aCoder.encode(descrip, forKey: PropertyKey.descrip)
         aCoder.encode(photo, forKey: PropertyKey.photo)
         aCoder.encode(solutionBlocksName, forKey: PropertyKey.solutionBlocksName)
+        aCoder.encode(startBlocks, forKey: PropertyKey.startBlocks)
         print(solutionBlocksName[0].name)
 
         //        aCoder.encode(hints, forKey: PropertyKey.hints)
@@ -79,10 +81,11 @@ class Activity: NSObject, NSCoding {
         let descrip = aDecoder.decodeObject(forKey: PropertyKey.descrip) as? String
         let photo = aDecoder.decodeObject(forKey: PropertyKey.photo) as? UIImage
         let solutionBlocksName = aDecoder.decodeObject(forKey: PropertyKey.solutionBlocksName) as? [Block]
+        let startBlocks = aDecoder.decodeObject(forKey: PropertyKey.startBlocks) as? [Block]
         //        let hints = aDecoder.decodeObject(forKey: PropertyKey.hints) as? [String]
         
         // Must call designated initializer.
-        self.init(name: name, descrip: descrip, photo: photo, solutionBlocksName: solutionBlocksName)
+        self.init(name: name, descrip: descrip, photo: photo, solutionBlocksName: solutionBlocksName, startBlocks: startBlocks)
     }
     
     func test(photo: UIImage = UIImage(named:"wiggle")!,descrip: String = "None"){

@@ -15,6 +15,7 @@ class ManageActivitiesTableViewController: UITableViewController {
     var activities=[Activity]()
     var parentController = ListViewController?.self
     var selectedIndex = 0;
+    var seletedIndexPath: IndexPath?;
     var mmm = 1
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,16 +67,17 @@ class ManageActivitiesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex = indexPath.row
+        seletedIndexPath = tableView.indexPathForSelectedRow
         performSegue(withIdentifier: "editActivity", sender: self)
     }
 
-    /*
-    // Override to support conditional editing of the table view.
+    
+     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
+         //Return false if you do not want the specified item to be editable.
         return true
     }
-    */
+ 
 
     /*
     // Override to support editing the table view.
@@ -105,7 +107,17 @@ class ManageActivitiesTableViewController: UITableViewController {
     */
 
     
-
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            activities.remove(at: indexPath.row)
+            saveActivities()
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
@@ -114,6 +126,21 @@ class ManageActivitiesTableViewController: UITableViewController {
         case "editActivity":
             let ctvc = segue.destination as! CreateTaskViewController
             ctvc.activity = activities[selectedIndex]
+            
+            // cheat: delete the original one, and add a new one later
+            activities.remove(at: selectedIndex)
+            saveActivities()
+            tableView.deleteRows(at: [seletedIndexPath!], with: .fade)
+//            guard let selectedActivityCell = sender as? ManageActivitiesTableViewCell else {
+//                fatalError("Unexpected sender: \(sender)")
+//            }
+//
+//            guard let indexPath = tableView.indexPath(for: selectedActivityCell) else {
+//                fatalError("The selected cell is not being displayed by the table")
+//            }
+//
+//            let selectedMeal = activities[indexPath.row]
+//            mealDetailViewController.meal = selectedMeal
             break
         default:
             break
@@ -125,9 +152,9 @@ class ManageActivitiesTableViewController: UITableViewController {
     
      func unwindToActivityList(sender: UIStoryboardSegue) {
         if let createTaskViewController = sender.source as? CreateTaskViewController, let activity = createTaskViewController.activity {
-            print(activity.name)
-            if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                // Update an existing meal.
+            if let selectedIndexPath = self.seletedIndexPath {
+                // Update an existing activity.
+                // THIS PART IS NOT WORKING
                 activities[selectedIndexPath.row] = activity
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
             }

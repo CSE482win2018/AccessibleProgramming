@@ -19,6 +19,11 @@ protocol BlockSelectionDelegate{
 
 class BlocksViewController:  RobotControlViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, BlockSelectionDelegate {
     
+    
+    
+//    var blocksStack = [Block]()
+    
+    
     var parentController: CreateTaskViewController?
     
     @IBOutlet weak var blocksProgram: UICollectionView!
@@ -651,11 +656,12 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
     }
     
     func sendDataToVc() {
+        print(blocksStack.count)
         parentController?.getBlocks(blocks: blocksStack)
     }
     
     func reloadBlocks(savedblocks: [Block]) {
-        print(savedblocks[0].name)
+        blocksStack.removeAll()
         for block in savedblocks {
             blocksStack.append(block)
         }
@@ -670,5 +676,9 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
         
     }
     
+    func manuallyReloadView() {
+        self.view.setNeedsDisplay()
 
+    }
+    
 }
