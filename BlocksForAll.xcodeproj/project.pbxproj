@@ -13,6 +13,8 @@
 		03617A1B2034147F003FC8FB /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03617A1A2034147F003FC8FB /* Activity.swift */; };
 		03617A1D2034F26A003FC8FB /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03617A1C2034F26A003FC8FB /* ActivityViewController.swift */; };
 		03F7FF80203E12DA00F1820A /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7FF7F203E12DA00F1820A /* ListViewController.swift */; };
+		03F7FF842043D7C500F1820A /* DoActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7FF832043D7C500F1820A /* DoActivityTableViewController.swift */; };
+		03F7FF862043D87800F1820A /* DoActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7FF852043D87800F1820A /* DoActivityTableViewCell.swift */; };
 		701A43871EC26EFD00314599 /* BlocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701A43861EC26EFD00314599 /* BlocksViewController.swift */; };
 		7F7031DF20421E0C008442CF /* ManageHintsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7031DE20421E0C008442CF /* ManageHintsTableViewCell.swift */; };
 		7F7031E120421E35008442CF /* ManageHintsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7031E020421E35008442CF /* ManageHintsTableViewController.swift */; };
@@ -57,6 +59,8 @@
 		03617A1A2034147F003FC8FB /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		03617A1C2034F26A003FC8FB /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		03F7FF7F203E12DA00F1820A /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		03F7FF832043D7C500F1820A /* DoActivityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoActivityTableViewController.swift; sourceTree = "<group>"; };
+		03F7FF852043D87800F1820A /* DoActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoActivityTableViewCell.swift; sourceTree = "<group>"; };
 		701A43861EC26EFD00314599 /* BlocksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlocksViewController.swift; path = ../BlocksViewController.swift; sourceTree = "<group>"; };
 		7F6B77D4204087BA003D52FA /* BlocksForAll.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BlocksForAll.entitlements; sourceTree = "<group>"; };
 		7F7031DE20421E0C008442CF /* ManageHintsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageHintsTableViewCell.swift; sourceTree = "<group>"; };
@@ -179,6 +183,8 @@
 				7F7031DE20421E0C008442CF /* ManageHintsTableViewCell.swift */,
 				7F7031E020421E35008442CF /* ManageHintsTableViewController.swift */,
 				F18FEEDB1EB115AF007C15B8 /* Helper */,
+				03F7FF832043D7C500F1820A /* DoActivityTableViewController.swift */,
+				03F7FF852043D87800F1820A /* DoActivityTableViewCell.swift */,
 			);
 			path = BlocksForAll;
 			sourceTree = "<group>";
@@ -321,6 +327,7 @@
 				F186EB881EE0D8B100C2FA4B /* BlockView.swift in Sources */,
 				F18FFFD31E65B4900090C4B6 /* BlockTableViewCell.swift in Sources */,
 				F10F71691E65BFF50049F3AA /* Block.swift in Sources */,
+				03F7FF842043D7C500F1820A /* DoActivityTableViewController.swift in Sources */,
 				F18FFFB31E65B0FB0090C4B6 /* AppDelegate.swift in Sources */,
 				030B3F60203BDEBD00D8D596 /* ManageActivitiesTableViewController.swift in Sources */,
 				F16BA3BC1F57919600A94FBA /* MainMenuViewController.swift in Sources */,
@@ -333,6 +340,7 @@
 				03617A1D2034F26A003FC8FB /* ActivityViewController.swift in Sources */,
 				03617A1B2034147F003FC8FB /* Activity.swift in Sources */,
 				03617A192034145B003FC8FB /* CreateTaskViewController.swift in Sources */,
+				03F7FF862043D87800F1820A /* DoActivityTableViewCell.swift in Sources */,
 				7F7031DF20421E0C008442CF /* ManageHintsTableViewCell.swift in Sources */,
 				7F7031E120421E35008442CF /* ManageHintsTableViewController.swift in Sources */,
 			);

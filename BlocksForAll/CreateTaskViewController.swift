@@ -22,7 +22,9 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
     // area in instruction view
     @IBOutlet weak var instructionView: UIView!
     
-
+    @IBOutlet weak var showInDoActivitySwitch: UISwitch!
+    
+    
     var solutionBlocksName = [Block]()
     var startBlocks = [Block]()
 
@@ -150,6 +152,7 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
     
     func reloadActivity() {
         justLoad = 0
+        showInDoActivitySwitch.isOn = (activity?.showInDoActivity)!
         activity_name.text = activity?.name
         activity_descrip.text = activity?.descrip
         solutionBlocksName.removeAll()
@@ -176,7 +179,7 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
 //        return vc
 //    }()
 //
- 
+    
     var forceReload = false
     @IBAction func segmentedViewToggle(_ sender: UISegmentedControl) {
         updateBlocks()
@@ -231,8 +234,9 @@ var getBlocksFlag = 0
 
         let solutionBlocks = self.solutionBlocksName
         let startBlocks = self.startBlocks
+        let showInDoActivity = showInDoActivitySwitch.isOn
 
-        activity = Activity(name: name, descrip: descrip, photo:photo, solutionBlocksName: solutionBlocks, startBlocks: startBlocks)
+        activity = Activity(name: name, descrip: descrip, photo:photo, solutionBlocksName: solutionBlocks, startBlocks: startBlocks, showInDoActivity: showInDoActivity)
 
         
     }

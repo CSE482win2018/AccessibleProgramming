@@ -40,6 +40,8 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
     var blockHeight = 150
     let blockSpacing = 1
     
+    @IBOutlet weak var activityName: UILabel!
+    var activity: Activity?
     var description_text="Your task today is to make a loud crocodile sound! To complete the activity find the crocadile sound in the blocks menu and place it in the block program, then press play to hear the crocadile roar!"
 
     var dragOn = false
@@ -71,6 +73,15 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
         //#selector(self.addBlockButton(_sender:))
         //NotificationCenter.default.addObserver(self, selector: #selector(self.didFinishAnnouncement(dict:)), name: NSNotification.Name.UIAccessibilityAnnouncementDidFinish, object: nil)
         // Do any additional setup after loading the view.
+        
+        
+        // Do Acitvity Data Fetch
+        if (activity != nil) {
+            activityName.text = "Activity Name: " + (activity?.name)!
+            shownDecription?.text = "Description: \n" + (activity?.descrip)!
+            blocksStack.removeAll()
+            blocksStack += (activity?.startBlocks)!
+        }
         blocksProgram.reloadData()
 
     }
