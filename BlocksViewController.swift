@@ -623,13 +623,14 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
         }
         if (nameArr.count==0){
             let announcement = "You haven't picked any blocks yet, try adding some and test your answer again."
+            FeedBackText.text = announcement
             UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
 
         }
         else if (nameArr.count==answer.count){
             for i in 0..<nameArr.count{
                 if(nameArr[i] != answer[i]){
-                    let announcement = "Im sorry thats not quite right, Please try again"
+                    let announcement = "Im sorry thats not quite right, at least block "+String(i)+" is not correct."
                     FeedBackText.text = announcement
 
                     UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
@@ -648,6 +649,7 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
         }
         else{
             let announcement = "Im sorry thats not quite right, Please try again"
+            FeedBackText.text = announcement
            UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
             return
         }
