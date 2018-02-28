@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import AVFoundation
 //collection of blocks that are part of your program
 var blocksStack = [Block]()
 
@@ -17,15 +17,16 @@ protocol BlockSelectionDelegate{
     func setParentViewController(_ myVC:UIViewController)
 }
 
-class BlocksViewController:  RobotControlViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, BlockSelectionDelegate {
+class BlocksViewController:  RobotControlViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, BlockSelectionDelegate,AVAudioPlayerDelegate {
     
     
     
 //    var blocksStack = [Block]()
     
-    
+
     var parentController: CreateTaskViewController?
-    
+    var audioPlayer: AVAudioPlayer?
+    var hints:[(String,URL)]?
     @IBOutlet weak var blocksProgram: UICollectionView!
     @IBOutlet weak var playTrashToggleButton: UIButton!
     
@@ -39,7 +40,7 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
     var blockWidth = 150
     var blockHeight = 150
     let blockSpacing = 1
-    
+    var hintCtr=0
     @IBOutlet weak var activityName: UILabel!
     var activity: Activity?
     var description_text="Your task today is to make a loud crocodile sound! To complete the activity find the crocadile sound in the blocks menu and place it in the block program, then press play to hear the crocadile roar!"
@@ -73,7 +74,7 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
         //#selector(self.addBlockButton(_sender:))
         //NotificationCenter.default.addObserver(self, selector: #selector(self.didFinishAnnouncement(dict:)), name: NSNotification.Name.UIAccessibilityAnnouncementDidFinish, object: nil)
         // Do any additional setup after loading the view.
-        
+        hints = parentController?.activity?.hints
         
         // Do Acitvity Data Fetch
         if (activity != nil) {
@@ -92,6 +93,23 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func playHint(_ sender: Any) {
+        let announcement = hints![hintCtr].0
+        FeedBackText.text = announcement
+        UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
+        do {
+            self.audioPlayer! = try AVAudioPlayer(contentsOf: hints![hintCtr].1)
+            audioPlayer!.prepareToPlay()
+            audioPlayer!.volume = 1.0
+            audioPlayer!.play()
+        } catch let error as NSError {
+            //self.player = nil
+            print(error.localizedDescription)
+        } catch {
+            print("AVAudioPlayer init failed")
+        }
+        hintCtr = (hintCtr+1) % (hints?.count)!
+    }
     // MARK: - Block Selection Delegate
     func unsetBlocks() {
         movingBlocks = false

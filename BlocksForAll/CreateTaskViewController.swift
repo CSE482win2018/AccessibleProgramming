@@ -75,6 +75,7 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
     var audioFileName :String!
     var blocksViewController = BlocksViewController()
     var startBlocksViewController = BlocksViewController()
+    var descripURL:URL!
     
     
     override func viewDidLoad() {
@@ -103,7 +104,7 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
                                     in: .userDomainMask)
         audioFileName = randomAlphaNumericString(length: 11)+".caf"
         let soundFileURL = dirPaths[0].appendingPathComponent(audioFileName)
-        
+        descripURL=soundFileURL
         let recordSettings =
             [AVEncoderAudioQualityKey: AVAudioQuality.min.rawValue,
              AVEncoderBitRateKey: 16,

@@ -14,13 +14,13 @@ class Activity: NSObject, NSCoding {
     //MARK: Properties
     var name: String
     var descrip: String?
-    //    var hints: [String]?
+    
     //    var rating: Int
     var photo: UIImage?
     var solutionBlocksName: [Block]
     var startBlocks: [Block]
     var showInDoActivity: Bool
-    
+    var hints:[(String,URL)]
     struct PropertyKey {
         static let name = "name"
         static let descrip = "descrip"
@@ -28,6 +28,7 @@ class Activity: NSObject, NSCoding {
         static let solutionBlocksName = "solutionBlocksName"
         static let startBlocks = "startBlocks"
         static let showInDoActivity = "showInDoActivity"
+        static let hints = "hints"
     }
     
     //MARK: Archiving Paths
@@ -35,7 +36,7 @@ class Activity: NSObject, NSCoding {
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("activities")
     
     //MARK: Initialization
-    init?(name: String, descrip: String?, photo: UIImage?, solutionBlocksName: [Block]?, startBlocks: [Block]?, showInDoActivity: Bool) {
+    init?(name: String, descrip: String?, photo: UIImage?, solutionBlocksName: [Block]?, startBlocks: [Block]?, showInDoActivity: Bool,hints:[(String,URL)]) {
         
         // The name must not be empty
         guard !name.isEmpty else {
@@ -59,6 +60,7 @@ class Activity: NSObject, NSCoding {
         self.solutionBlocksName = solutionBlocksName!
         self.startBlocks = startBlocks!
         self.showInDoActivity = showInDoActivity
+        self.hints = hints
     }
     
     //MARK: NSCoding
@@ -69,7 +71,7 @@ class Activity: NSObject, NSCoding {
         aCoder.encode(solutionBlocksName, forKey: PropertyKey.solutionBlocksName)
         aCoder.encode(startBlocks, forKey: PropertyKey.startBlocks)
         aCoder.encode(showInDoActivity, forKey: PropertyKey.showInDoActivity)
-        //        aCoder.encode(hints, forKey: PropertyKey.hints)
+        aCoder.encode(hints, forKey: PropertyKey.hints)
 
     }
     
@@ -86,8 +88,9 @@ class Activity: NSObject, NSCoding {
         let startBlocks = aDecoder.decodeObject(forKey: PropertyKey.startBlocks) as? [Block]
         //        let hints = aDecoder.decodeObject(forKey: PropertyKey.hints) as? [String]
         let showInDoActivity = aDecoder.decodeBool(forKey: PropertyKey.showInDoActivity) as Bool
+        let hints = aDecoder.decodeObject(forKey: PropertyKey.hints) as? [(String,URL)]?
         // Must call designated initializer.
-        self.init(name: name, descrip: descrip, photo: photo, solutionBlocksName: solutionBlocksName, startBlocks: startBlocks, showInDoActivity: showInDoActivity)
+        self.init(name: name, descrip: descrip, photo: photo, solutionBlocksName: solutionBlocksName, startBlocks: startBlocks, showInDoActivity: showInDoActivity, hints: (hints as? [(String, URL)])!)
     }
     
     func test(photo: UIImage = UIImage(named:"wiggle")!,descrip: String = "None"){

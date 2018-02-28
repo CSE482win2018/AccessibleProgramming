@@ -344,7 +344,7 @@
                         <outlet property="activity_descrip" destination="XcV-bA-r83" id="J2D-Pq-p9o"/>
                         <outlet property="activity_name" destination="mKS-IF-FT5" id="hMu-8z-Kna"/>
                         <outlet property="blocksView" destination="az7-dc-rfs" id="KpQ-Eb-jcl"/>
-                        <outlet property="hintsView" destination="9hS-86-XGV" id="hXW-X5-tBK"/>
+                        <outlet property="hintsView" destination="9hS-86-XGV" id="bZE-FD-Eas"/>
                         <outlet property="instructionView" destination="MKz-Pj-EOq" id="crY-o1-evg"/>
                         <outlet property="playButton" destination="IR4-jR-0zg" id="tgL-B5-N66"/>
                         <outlet property="recordButton" destination="t4x-cT-Dho" id="36V-DE-RHm"/>
@@ -896,6 +896,15 @@
                                         <state key="normal" title="Spatial Layout"/>
                                         <connections>
                                             <action selector="switchLayout:" destination="yvW-HD-LK6" eventType="touchUpInside" id="DKk-oh-ufi"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8gr-2i-boM">
+                                        <rect key="frame" x="8" y="374" width="141" height="200"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                        <state key="normal" title="Play HInt"/>
+                                        <connections>
+                                            <action selector="playHInt:" destination="yvW-HD-LK6" eventType="touchUpInside" id="plS-g8-tRR"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1565,8 +1574,8 @@
         <image name="wiggle" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="M5E-Q8-fiS"/>
+        <segue reference="cm6-Im-Mqz"/>
         <segue reference="7iB-dr-bDT"/>
-        <segue reference="u2L-dd-czE"/>
+        <segue reference="SwJ-uT-SUQ"/>
     </inferredMetricsTieBreakers>
 </document>
