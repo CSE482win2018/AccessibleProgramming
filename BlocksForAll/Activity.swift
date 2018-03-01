@@ -30,7 +30,7 @@ class Activity: NSObject, NSCoding {
         static let startBlocks = "startBlocks"
         static let showInDoActivity = "showInDoActivity"
         static let hints = "hints"
-        static let audioURL = "URL"
+        static let audioURL = "audioURL"
     }
     
     //MARK: Archiving Paths
@@ -38,7 +38,7 @@ class Activity: NSObject, NSCoding {
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("activities")
     
     //MARK: Initialization
-    init?(name: String, descrip: String?, solutionBlocksName: [Block]?, startBlocks: [Block]?, showInDoActivity: Bool,hints:[(String,URL)],audioURL:URL) {
+    init?(name: String, descrip: String?, solutionBlocksName: [Block]?, startBlocks: [Block]?, showInDoActivity: Bool,hints:[(String,URL)],audioURL:URL?) {
         
         // The name must not be empty
         guard !name.isEmpty else {
@@ -62,7 +62,7 @@ class Activity: NSObject, NSCoding {
         self.startBlocks = startBlocks!
         self.showInDoActivity = showInDoActivity
         self.hints = hints
-        self.audioURL = audioURL
+        self.audioURL = audioURL!
     }
     
     //MARK: NSCoding

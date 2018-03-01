@@ -11,7 +11,8 @@ import os.log
 
 class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudioRecorderDelegate {
     var activity: Activity?
-    
+    var hasRecord : Bool?
+
     @IBOutlet weak var blocksView: UIView!
     @IBOutlet weak var startBlocksView: UIView!
     
@@ -31,12 +32,12 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
-    
     @IBAction func recordAudio(_ sender: Any) {
         if audioRecorder?.isRecording == false {
             playButton.isEnabled = false
             stopButton.isEnabled = true
             audioRecorder?.record()
+            hasRecord = true
         }
     }
     
@@ -55,10 +56,15 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
         if audioRecorder?.isRecording == false {
             stopButton.isEnabled = true
             recordButton.isEnabled = false
-            
+            var url : URL
+            if (!hasRecord!) {
+               url = descripURL
+            } else {
+                url = (audioRecorder?.url)!
+            }
             do {
                 try audioPlayer = AVAudioPlayer(contentsOf:
-                    (audioRecorder?.url)!)
+                    url)
                 audioPlayer!.delegate = self
                 audioPlayer!.prepareToPlay()
                 audioPlayer!.play()
@@ -90,9 +96,7 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
         startBlocksViewController = startBlocksViewControllerVC
         self.startBlocksViewController.parentController = self
         addViewControllerAsChildViewController(childViewController: startBlocksViewControllerVC)
-        if (activity != nil) {
-            reloadActivity()
-        }
+        
         
         let hvc = self.storyboard?.instantiateViewController(withIdentifier: "manageHintsTableViewController") as! ManageHintsTableViewController
         hintsTableViewController = hvc
@@ -133,7 +137,10 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
             print("audioSession error: \(error.localizedDescription)")
         }
         print("fileName: "+audioFileName)
- 
+        hasRecord = false
+        if (activity != nil) {
+            reloadActivity()
+        }
     }
   
 
@@ -169,6 +176,17 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
         startBlocks = (activity?.startBlocks)!
         getBlocksFlag = 1
         startBlocksViewController.reloadBlocks(savedblocks: startBlocks)
+        descripURL = activity?.audioURL
+        do {
+            try audioPlayer = AVAudioPlayer(contentsOf:
+                (activity?.audioURL)!)
+            audioPlayer!.delegate = self
+            audioPlayer!.prepareToPlay()
+//            audioPlayer!.play()
+        } catch let error as NSError {
+            print("audioPlayer error: \(error.localizedDescription)")
+        }
+        playButton.isEnabled = true
     }
     //    lazy var instructionViewController : InstructionViewController = {
     ////        let board = UIStoryboard(name: "Main", bundle: Bundle.main)
@@ -231,7 +249,8 @@ var justLoad = 0
 var getBlocksFlag = 0
     
     private func saveActivity() {
-        let name = activity_name.text ?? "New_Activity"
+       
+        let name = strlen(activity_name.text) > 0 ? activity_name.text : "New_Activity"
         var descrip = ""
         
         if activity_descrip != nil && activity_descrip.text.count > 0 {
@@ -242,8 +261,13 @@ var getBlocksFlag = 0
         let startBlocks = self.startBlocks
         let showInDoActivity = showInDoActivitySwitch.isOn
         let hints = hintsTableViewController.hints
-        activity?.audioURL=descripURL
-        activity = Activity(name: name, descrip: descrip,  solutionBlocksName: solutionBlocks, startBlocks: startBlocks, showInDoActivity: showInDoActivity, hints: hints as! [(String, URL)],audioURL: descripURL as! URL!)
+        var url : URL
+        if (!hasRecord!) {
+            url = descripURL
+        } else {
+            url = (audioRecorder?.url)!
+        }
+        activity = Activity(name: name!, descrip: descrip,  solutionBlocksName: solutionBlocks, startBlocks: startBlocks, showInDoActivity: showInDoActivity, hints: hints as! [(String, URL)],audioURL: url)
 
         
     }
