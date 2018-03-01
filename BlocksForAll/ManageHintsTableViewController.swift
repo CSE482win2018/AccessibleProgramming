@@ -9,6 +9,7 @@
 import UIKit
 
 class ManageHintsTableViewController: UITableViewController {
+    //  VVVVV   (string,url)?
     var hints:[String]=[]
     
     @IBOutlet weak var addNewHintButton: UIButton!

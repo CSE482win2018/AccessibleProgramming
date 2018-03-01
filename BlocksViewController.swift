@@ -74,7 +74,6 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
         //#selector(self.addBlockButton(_sender:))
         //NotificationCenter.default.addObserver(self, selector: #selector(self.didFinishAnnouncement(dict:)), name: NSNotification.Name.UIAccessibilityAnnouncementDidFinish, object: nil)
         // Do any additional setup after loading the view.
-        hints = parentController?.activity?.hints
         
         // Do Acitvity Data Fetch
         if (activity != nil) {
@@ -82,6 +81,8 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
             shownDecription?.text = "Description: \n" + (activity?.descrip)!
             blocksStack.removeAll()
             blocksStack += (activity?.startBlocks)!
+            hints = activity?.hints
+
         }
         blocksProgram.reloadData()
 

@@ -75,6 +75,7 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
     var audioFileName :String!
     var blocksViewController = BlocksViewController()
     var startBlocksViewController = BlocksViewController()
+    var hintsTableViewController = ManageHintsTableViewController()
     var descripURL:URL!
     
     
@@ -92,6 +93,10 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
         if (activity != nil) {
             reloadActivity()
         }
+        
+        let hvc = self.storyboard?.instantiateViewController(withIdentifier: "manageHintsTableViewController") as! ManageHintsTableViewController
+        hintsTableViewController = hvc
+        addViewControllerAsChildViewController(childViewController: hvc)
         
 
         
@@ -236,8 +241,9 @@ var getBlocksFlag = 0
         let solutionBlocks = self.solutionBlocksName
         let startBlocks = self.startBlocks
         let showInDoActivity = showInDoActivitySwitch.isOn
+        let hints = hintsTableViewController.hints
 
-        activity = Activity(name: name, descrip: descrip, photo:photo, solutionBlocksName: solutionBlocks, startBlocks: startBlocks, showInDoActivity: showInDoActivity)
+        activity = Activity(name: name, descrip: descrip, photo:photo, solutionBlocksName: solutionBlocks, startBlocks: startBlocks, showInDoActivity: showInDoActivity, hints: hints)
 
         
     }
