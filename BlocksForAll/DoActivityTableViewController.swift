@@ -65,7 +65,6 @@ class DoActivityTableViewController: UITableViewController {
         let act = activities[indexPath.row]
         // Configure the cell...
         cell.nameLabel.text=act.name
-        cell.photoImageView.image=act.photo
         return cell
     }
     

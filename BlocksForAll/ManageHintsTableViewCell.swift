@@ -74,6 +74,7 @@ class ManageHintsTableViewCell: UITableViewCell, AVAudioPlayerDelegate, AVAudioR
                                     in: .userDomainMask)
         let soundFileURL = dirPaths[0].appendingPathComponent(self.audioFileName!)
         self.fileURL=soundFileURL
+        self.viewController?.hints[(self.viewController?.hints.count)!-1].1=soundFileURL
         let recordSettings =
             [AVEncoderAudioQualityKey: AVAudioQuality.min.rawValue,
              AVEncoderBitRateKey: 16,

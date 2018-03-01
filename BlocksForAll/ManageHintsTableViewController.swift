@@ -10,19 +10,18 @@ import UIKit
 
 class ManageHintsTableViewController: UITableViewController {
     //  VVVVV   (string,url)?
-    var hints:[String]=[]
-    
+    var hints:[(String,URL?)]=[]
     @IBOutlet weak var addNewHintButton: UIButton!
     @IBAction func addNewhint(_ sender: Any) {
         print("in here")
         
-        hints.append("AddHint")
+        hints.append(("AddHint",URL(string:"https://www.apple.com")))
         tableView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -62,8 +61,8 @@ class ManageHintsTableViewController: UITableViewController {
         
         let hint = hints[indexPath.row]
         // Configure the cell...
-        cell.hintText.text=hint
-       // cell.fileURL=
+        cell.hintText.text=hint.0
+        cell.fileURL = hint.1
         cell.viewController=self
         return cell
     }

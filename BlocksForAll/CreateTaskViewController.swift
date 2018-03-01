@@ -109,7 +109,7 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
                                     in: .userDomainMask)
         audioFileName = randomAlphaNumericString(length: 11)+".caf"
         let soundFileURL = dirPaths[0].appendingPathComponent(audioFileName)
-        descripURL=soundFileURL
+        self.descripURL=soundFileURL
         let recordSettings =
             [AVEncoderAudioQualityKey: AVAudioQuality.min.rawValue,
              AVEncoderBitRateKey: 16,
@@ -233,7 +233,7 @@ var getBlocksFlag = 0
     private func saveActivity() {
         let name = activity_name.text ?? "New_Activity"
         var descrip = ""
-        let photo = activity?.photo
+        
         if activity_descrip != nil && activity_descrip.text.count > 0 {
             descrip = activity_descrip.text
         }
@@ -242,8 +242,8 @@ var getBlocksFlag = 0
         let startBlocks = self.startBlocks
         let showInDoActivity = showInDoActivitySwitch.isOn
         let hints = hintsTableViewController.hints
-
-        activity = Activity(name: name, descrip: descrip, photo:photo, solutionBlocksName: solutionBlocks, startBlocks: startBlocks, showInDoActivity: showInDoActivity, hints: hints)
+        activity?.audioURL=descripURL
+        activity = Activity(name: name, descrip: descrip,  solutionBlocksName: solutionBlocks, startBlocks: startBlocks, showInDoActivity: showInDoActivity, hints: hints as! [(String, URL)],audioURL: descripURL as! URL!)
 
         
     }

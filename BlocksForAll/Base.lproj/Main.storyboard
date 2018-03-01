@@ -899,12 +899,22 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8gr-2i-boM">
-                                        <rect key="frame" x="8" y="374" width="141" height="200"/>
+                                        <rect key="frame" x="0.0" y="471" width="141" height="130"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                         <state key="normal" title="Play HInt"/>
                                         <connections>
                                             <action selector="playHInt:" destination="yvW-HD-LK6" eventType="touchUpInside" id="plS-g8-tRR"/>
+                                            <action selector="playHint:" destination="yvW-HD-LK6" eventType="touchUpInside" id="70E-pD-yhm"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdl-8O-jvf">
+                                        <rect key="frame" x="0.0" y="351" width="141" height="112"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <accessibility key="accessibilityConfiguration" label="Play Description"/>
+                                        <state key="normal" title="Play Description"/>
+                                        <connections>
+                                            <action selector="playDesc:" destination="yvW-HD-LK6" eventType="touchUpInside" id="7I1-4a-r9P"/>
                                         </connections>
                                     </button>
                                 </subviews>

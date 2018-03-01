@@ -93,6 +93,19 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    @IBAction func playDesc(_ sender: Any) {
+        do {
+            self.audioPlayer! = try AVAudioPlayer(contentsOf: (activity?.audioURL)!)
+            audioPlayer!.prepareToPlay()
+            audioPlayer!.volume = 1.0
+            audioPlayer!.play()
+        } catch let error as NSError {
+            //self.player = nil
+            print(error.localizedDescription)
+        } catch {
+            print("AVAudioPlayer init failed")
+        }
+    }
     
     @IBAction func playHint(_ sender: Any) {
         let announcement = hints![hintCtr].0
