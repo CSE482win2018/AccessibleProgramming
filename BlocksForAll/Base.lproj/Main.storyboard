@@ -1159,6 +1159,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <connections>
+                        <outlet property="subview" destination="rfQ-7T-3X4" id="yUv-uQ-Dhg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="60P-jA-dNm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1585,7 +1588,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cm6-Im-Mqz"/>
-        <segue reference="7iB-dr-bDT"/>
-        <segue reference="u2L-dd-czE"/>
+        <segue reference="v8X-OA-NLZ"/>
+        <segue reference="9ef-mK-bIt"/>
     </inferredMetricsTieBreakers>
 </document>

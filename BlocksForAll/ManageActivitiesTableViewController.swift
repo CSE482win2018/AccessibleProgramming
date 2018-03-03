@@ -13,14 +13,15 @@ class ManageActivitiesTableViewController: UITableViewController {
     //MARK: Properties
     
     var activities=[Activity]()
-    var parentController = ListViewController?.self
-    var selectedIndex = 0;
+    var parentController : ListViewController?
+    var selectedIndex = -1;
     var seletedIndexPath: IndexPath?;
     var mmm = 1
     override func viewDidLoad() {
         super.viewDidLoad()
         // Load any saved meals, otherwise load sample data.
         if let savedActivities = loadActivities() {
+            activities.removeAll()
             activities += savedActivities
         }
         else {
@@ -67,7 +68,9 @@ class ManageActivitiesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex = indexPath.row
         seletedIndexPath = tableView.indexPathForSelectedRow
+        
         performSegue(withIdentifier: "editActivity", sender: self)
+        
     }
 
     
@@ -117,6 +120,7 @@ class ManageActivitiesTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
+    var oldActivity : Activity?
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
@@ -125,11 +129,14 @@ class ManageActivitiesTableViewController: UITableViewController {
         case "editActivity":
             let ctvc = segue.destination as! CreateTaskViewController
             ctvc.activity = activities[selectedIndex]
-            
+            oldActivity = activities[selectedIndex]
+            print(selectedIndex)
+            ctvc.memorizeIndex(selectedIndex: selectedIndex,seletedIndexPath: seletedIndexPath)
             // cheat: delete the original one, and add a new one later
-            activities.remove(at: selectedIndex)
-            saveActivities()
-            tableView.deleteRows(at: [seletedIndexPath!], with: .fade)
+//            activities.remove(at: selectedIndex)
+//            saveActivities()
+//            tableView.deleteRows(at: [seletedIndexPath!], with: .fade)
+
 //            guard let selectedActivityCell = sender as? ManageActivitiesTableViewCell else {
 //                fatalError("Unexpected sender: \(sender)")
 //            }
@@ -145,16 +152,28 @@ class ManageActivitiesTableViewController: UITableViewController {
             break
         }
     }
+    
+    func updateTableCell() {
+        activities.remove(at: selectedIndex)
+        
+        tableView.deleteRows(at: [seletedIndexPath!], with: .fade)
+    }
+    
    
     
     //MARK: Actions
     
      func unwindToActivityList(sender: UIStoryboardSegue) {
+        if let savedActivities = loadActivities() {
+            activities.removeAll()
+            activities += savedActivities
+        }
         if let createTaskViewController = sender.source as? CreateTaskViewController, let activity = createTaskViewController.activity {
-            if let selectedIndexPath = self.seletedIndexPath {
+            if let selectedIndexPath = createTaskViewController.tableIndexPath {
                 // Update an existing activity.
-                // THIS PART IS NOT WORKING
-                activities[selectedIndexPath.row] = activity
+
+                activities[createTaskViewController.tableIndex] = activity
+                saveActivities()
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
             }
             else {
@@ -162,11 +181,10 @@ class ManageActivitiesTableViewController: UITableViewController {
                 let newIndexPath = IndexPath(row: activities.count, section: 0)
                 
                 activities.append(activity)
+                saveActivities()
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
             
-            // Save the meals.
-            saveActivities()
         }
     }
     //MARK: Private Methods
