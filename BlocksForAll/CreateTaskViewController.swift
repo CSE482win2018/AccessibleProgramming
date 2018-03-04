@@ -30,10 +30,27 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
     
     var solutionBlocksName = [Block]()
     var startBlocks = [Block]()
-
+    
+    
+    var audioPlayer: AVAudioPlayer?
+    var audioRecorder: AVAudioRecorder?
+    var audioFileName :String!
+    
+    var blocksViewController : BlocksViewController?
+    var startBlocksViewController : BlocksViewController?
+    var hintsTableViewController : ManageHintsTableViewController?
+    
+    var descripURL:URL!
+    
+    
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
+    
+    
+    
+    
+    
     @IBAction func recordAudio(_ sender: Any) {
         if audioRecorder?.isRecording == false {
             playButton.isEnabled = false
@@ -77,32 +94,23 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
     }
     
    
-    var audioPlayer: AVAudioPlayer?
-    var audioRecorder: AVAudioRecorder?
-    
-    var audioFileName :String!
-    var blocksViewController : BlocksViewController?
-    var startBlocksViewController : BlocksViewController?
-    var hintsTableViewController : ManageHintsTableViewController?
-    var descripURL:URL!
-    
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "blocksViewController") as! BlocksViewController
         blocksViewController = vc
         self.blocksViewController?.parentController = self
-        addViewControllerAsChildViewController(childViewController: vc)
+        addViewControllerAsChildViewController(view: blocksView, childViewController: vc)
         
         let startBlocksViewControllerVC = self.storyboard?.instantiateViewController(withIdentifier: "startBlocksViewController") as! BlocksViewController
         startBlocksViewController = startBlocksViewControllerVC
         self.startBlocksViewController?.parentController = self
-        addViewControllerAsChildViewController(childViewController: startBlocksViewControllerVC)
+        addViewControllerAsChildViewController(view: startBlocksView, childViewController: startBlocksViewControllerVC)
         
         
         let hvc = self.storyboard?.instantiateViewController(withIdentifier: "manageHintsTableViewController") as! ManageHintsTableViewController
         hintsTableViewController = hvc
-        addViewControllerAsChildViewController(childViewController: hvc)
+        addViewControllerAsChildViewController(view: hintsView, childViewController: hvc)
         
 
         
@@ -320,9 +328,9 @@ var getBlocksFlag = 0
     }
 
     
-    private func addViewControllerAsChildViewController(childViewController: UIViewController) {
+    private func addViewControllerAsChildViewController(view: UIView, childViewController: UIViewController) {
         addChildViewController(childViewController)
-//        view.addSubview(childViewController.view)
+        view.addSubview(childViewController.view)
 //        childViewController.view.frame = view.bounds
 //        childViewController.view.autoresizingMask = [.flexibleWidth,.flexibleHeight]
         childViewController.didMove(toParentViewController: self)
