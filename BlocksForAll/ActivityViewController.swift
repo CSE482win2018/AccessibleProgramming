@@ -119,19 +119,19 @@ class ActivityViewController:  UIViewController, UICollectionViewDataSource, UIC
         else if (nameArr.count==answer.count){
             for i in 0..<nameArr.count{
                 if(nameArr[i] != answer[i]){
-                    let announcement = "Im sorry thats not quite right, Please try again"
+                    let announcement = "I'm sorry that's not quite right. Please try again."
                     UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
                     return
                 }
                 else{
-                    let announcement = "Congratualtions! That's corret"
+                    let announcement = "Congratulations! That's correct!"
                     UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
                     return
                 }
             }
         }
         else{
-            let announcement = "Im sorry thats not quite right, Please try again"
+            let announcement = "I'm sorry that's not quite right. Please try again."
             UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
             return
         }

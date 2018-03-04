@@ -43,7 +43,7 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
     var hintCtr=0
     @IBOutlet weak var activityName: UILabel!
     var activity: Activity?
-    var description_text="Your task today is to make a loud crocodile sound! To complete the activity find the crocadile sound in the blocks menu and place it in the block program, then press play to hear the crocadile roar!"
+    var description_text="Your task today is to make a loud crocodile sound! To complete the activity find the crocodile sound in the blocks menu and place it in the program space, then press play to hear the crocodile roar!"
 
     var dragOn = false
     
@@ -673,7 +673,7 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
         else if (nameArr.count==answer.count){
             for i in 0..<nameArr.count{
                 if(nameArr[i] != answer[i]){
-                    let announcement = "Im sorry thats not quite right, at least block "+String(i)+" is not correct."
+                    let announcement = "I'm sorry that's not quite right, try changing the "+String(i)+" block."
                     FeedBackText.text = announcement
 
                     UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
@@ -681,7 +681,7 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
 
                 }
                 else{
-                    let announcement = "Congratulations! That's correct"
+                    let announcement = "Congratulations! That's correct!"
                     FeedBackText.text = announcement
 
                     UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
@@ -691,7 +691,7 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
             }
         }
         else{
-            let announcement = "Im sorry thats not quite right, Please try again"
+            let announcement = "I'm sorry that's not quite right. Please try again."
             FeedBackText.text = announcement
            UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
             return
