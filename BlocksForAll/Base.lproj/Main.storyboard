@@ -904,7 +904,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                         <state key="normal" title="Play Hint"/>
                                         <connections>
-                                            <action selector="playHint:" destination="yvW-HD-LK6" eventType="touchUpInside" id="plS-g8-tRR"/>
                                             <action selector="playHint:" destination="yvW-HD-LK6" eventType="touchUpInside" id="70E-pD-yhm"/>
                                         </connections>
                                     </button>

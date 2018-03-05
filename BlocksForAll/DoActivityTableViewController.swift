@@ -84,13 +84,15 @@ class DoActivityTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         switch (segue.identifier ?? "") {
         case "doActivity":
+            if (eternalBlockViewController == nil) {
+                let dovc = segue.destination as! BlocksViewController
+                eternalBlockViewController = dovc
+            }
             if (indexHasSet)! {
-              
+                
                 eternalBlockViewController?.activity = activities[selectedIndex]
                 eternalBlockViewController?.viewDidLoad()
             }
-            let dovc = segue.destination as! BlocksViewController
-            eternalBlockViewController = dovc
             
           
             break
