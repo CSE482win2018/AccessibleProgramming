@@ -97,7 +97,12 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
         }
     }
     
-   
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        blocksView.endEditing(true)
+        startBlocksView.endEditing(true)
+        hintsView.endEditing(true)
+    }
    
     override func viewDidLoad() {
         super.viewDidLoad()
