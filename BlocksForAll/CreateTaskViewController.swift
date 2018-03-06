@@ -48,7 +48,7 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
     @IBOutlet weak var playButton: UIButton!
     
     
-    
+    var hints: [(String, URL?)]?
     
     
     @IBAction func recordAudio(_ sender: Any) {
@@ -114,6 +114,7 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
         
         let hvc = self.storyboard?.instantiateViewController(withIdentifier: "manageHintsTableViewController") as! ManageHintsTableViewController
         hintsTableViewController = hvc
+        hintsTableViewController?.parentVC = self
         addViewControllerAsChildViewController(view: hintsView, childViewController: hvc)
         
 
@@ -152,6 +153,7 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
         }
         print("fileName: "+audioFileName)
         hasRecord = false
+        hints = [(String, URL?)]()
         if (activity != nil) {
             reloadActivity()
         }
@@ -196,6 +198,7 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
         getBlocksFlag = 1
         startBlocksViewController?.reloadBlocks(savedblocks: startBlocks)
         descripURL = activity?.audioURL
+        hintsTableViewController?.signalFromCreate()
         do {
             try audioPlayer = AVAudioPlayer(contentsOf:
                 (activity?.audioURL)!)
@@ -279,14 +282,14 @@ var getBlocksFlag = 0
         let solutionBlocks = self.solutionBlocksName
         let startBlocks = self.startBlocks
         let showInDoActivity = showInDoActivitySwitch.isOn
-        let hints = hintsTableViewController?.hints
+        let hints = self.hints
         var url : URL
         if (!hasRecord!) {
             url = descripURL
         } else {
             url = (audioRecorder?.url)!
         }
-        activity = Activity(name: name!, descrip: descrip,  solutionBlocksName: solutionBlocks, startBlocks: startBlocks, showInDoActivity: showInDoActivity, hints: hints! as! [(String, URL)] ,audioURL: url)
+        activity = Activity(name: name!, descrip: descrip,  solutionBlocksName: solutionBlocks, startBlocks: startBlocks, showInDoActivity: showInDoActivity, hints: hints as! [(String, URL)] ,audioURL: url)
 
         
     }
@@ -302,8 +305,12 @@ var getBlocksFlag = 0
         } else {
             justLoad = 1
         }
+        hintsTableViewController?.signalFromCreate()
         
-        
+    }
+    
+    func getHints(hints: [(String,URL?)]) {
+        self.hints = hints
     }
 
     func getBlocks(blocks : [Block]){

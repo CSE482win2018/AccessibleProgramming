@@ -135,6 +135,7 @@
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="az7-dc-rfs">
                                 <rect key="frame" x="4" y="122" width="1016" height="646"/>
+                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <segue destination="GkX-XA-54W" kind="embed" id="FHa-Y8-O9Q"/>
                                 </connections>
@@ -170,6 +171,7 @@
                             </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QNq-2y-dFQ">
                                 <rect key="frame" x="4" y="122" width="1016" height="638"/>
+                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <segue destination="cCB-vt-J8a" kind="embed" id="E43-Va-4cu"/>
                                 </connections>
@@ -177,19 +179,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MKz-Pj-EOq">
                                 <rect key="frame" x="0.0" y="122" width="1024" height="646"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzU-iN-ppF">
-                                        <rect key="frame" x="199" y="101" width="137" height="52"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="137" id="eKk-IS-dj5"/>
-                                            <constraint firstAttribute="height" constant="52" id="np4-hI-0az"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="XcV-bA-r83">
-                                        <rect key="frame" x="59" y="170" width="296" height="493"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="XcV-bA-r83">
+                                        <rect key="frame" x="59" y="105" width="296" height="495"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <accessibility key="accessibilityConfiguration" label="Activity Description Text Box"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="493" id="B1S-Jm-C4s"/>
                                         </constraints>
@@ -205,13 +198,14 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t4x-cT-Dho" userLabel="recordButton">
                                         <rect key="frame" x="390" y="32" width="113" height="66"/>
                                         <color key="backgroundColor" red="1" green="0.24969744490000001" blue="0.1533946149" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="recordButton" label="Record Button"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="recordButton" label="Record Description Audio"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="66" id="ha2-6T-bQg"/>
                                             <constraint firstAttribute="width" constant="113" id="yfz-2M-7sp"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                         <state key="normal" title="Record">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="recordAudio:" destination="lNT-ru-Aar" eventType="touchUpInside" id="HoR-i5-Ywv"/>
@@ -219,13 +213,14 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IR4-jR-0zg" userLabel="playButton">
                                         <rect key="frame" x="390" y="241" width="113" height="66"/>
-                                        <color key="backgroundColor" red="0.12928424355647747" green="0.38756881479533678" blue="0.2801104236557409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="playButton" label="Play Button"/>
+                                        <color key="backgroundColor" red="0.23378405159999999" green="0.69958306349999999" blue="0.499968368" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="playButton" label="Play Description Audio"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="66" id="eps-rT-sOB"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Play">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="playAudio:" destination="lNT-ru-Aar" eventType="touchUpInside" id="6q0-1U-Ccg"/>
@@ -234,19 +229,30 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Bf-2B-vYX" userLabel="stopButton" colorLabel="IBBuiltInLabel-Red">
                                         <rect key="frame" x="390" y="135" width="113" height="66"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="stopButton" label="Stop Button"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="stopButton" label="Stop Recording Description Audio"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="66" id="Btc-4B-NbX"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                         <state key="normal" title="Stop">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="stopAudio:" destination="lNT-ru-Aar" eventType="touchUpInside" id="nTw-DV-c5K"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Activity Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzU-iN-ppF">
+                                        <rect key="frame" x="102" y="32" width="210" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="137" id="eKk-IS-dj5"/>
+                                            <constraint firstAttribute="height" constant="52" id="np4-hI-0az"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.23378405159999999" green="0.69958306349999999" blue="0.499968368" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="t4x-cT-Dho" firstAttribute="top" secondItem="9hS-86-XGV" secondAttribute="top" id="1Y0-q8-HLy"/>
                                     <constraint firstItem="t4x-cT-Dho" firstAttribute="top" secondItem="MKz-Pj-EOq" secondAttribute="top" constant="32" id="71r-TS-iYn"/>
@@ -273,8 +279,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cGm-n5-PxT">
-                                <rect key="frame" x="27" y="20" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cGm-n5-PxT">
+                                <rect key="frame" x="26" y="20" width="48" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="h9y-ai-Cs4"/>
                                 </constraints>
@@ -355,7 +361,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TLJ-en-O8e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-328.125" y="786.328125"/>
+            <point key="canvasLocation" x="-328.125" y="785.9375"/>
         </scene>
         <!--Robot Table View Controller-->
         <scene sceneID="c6j-qc-ZGN">
@@ -1155,6 +1161,14 @@
                                     <segue destination="lNT-ru-Aar" kind="show" identifier="ListToCreate" id="v8X-OA-NLZ"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Note: Swipe Activity Left To Delete" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSc-jC-oWv">
+                                <rect key="frame" x="209" y="27" width="142" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="To delete an activity, swipe left on the selected activity to reveal the delete button on the right."/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
@@ -1164,7 +1178,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="60P-jA-dNm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1403" y="1217"/>
+            <point key="canvasLocation" x="-1403.3203125" y="1216.40625"/>
         </scene>
         <!--Manage Hints Table View Controller-->
         <scene sceneID="PUB-jN-Pnd">
@@ -1588,6 +1602,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="cm6-Im-Mqz"/>
         <segue reference="v8X-OA-NLZ"/>
-        <segue reference="SwJ-uT-SUQ"/>
+        <segue reference="u2L-dd-czE"/>
     </inferredMetricsTieBreakers>
 </document>

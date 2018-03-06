@@ -108,7 +108,8 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
         
         do {
             let url = activity?.audioURL
-            self.audioPlayer! = try AVAudioPlayer(contentsOf: url!)
+            self.audioPlayer = try AVAudioPlayer(contentsOf: url!)
+            audioPlayer!.delegate = self
             audioPlayer!.prepareToPlay()
             audioPlayer!.volume = 1.0
             audioPlayer!.play()
