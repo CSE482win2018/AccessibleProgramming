@@ -11,13 +11,17 @@ import os.log
 
 class ListViewController : UIViewController {
     
-    var manageActivitiesTable = ManageActivitiesTableViewController()
-//
+    @IBOutlet weak var subview: UIView!
+    var manageActivitiesTable: ManageActivitiesTableViewController?
+    var segue : UIStoryboardSegue?
     override func viewDidLoad() {
         super.viewDidLoad()
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "manageActivitiesTable") as! ManageActivitiesTableViewController
         manageActivitiesTable = vc
-//        manageActivitiesTable.parentController = self
+        //        manageActivitiesTable.parentController = self
+        if (segue != nil) {
+            manageActivitiesTable?.unwindToActivityList(sender: self.segue!)
+        }
         addViewControllerAsChildViewController(childViewController: vc)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -30,14 +34,16 @@ class ListViewController : UIViewController {
 
 
     func unwindToActivityList(sender: UIStoryboardSegue) {
-        manageActivitiesTable.unwindToActivityList(sender: sender)
+        segue = sender
+        manageActivitiesTable?.unwindToActivityList(sender: sender)
     }
 
     private func addViewControllerAsChildViewController(childViewController: UIViewController) {
         addChildViewController(childViewController)
-        //        view.addSubview(childViewController.view)
-        //        childViewController.view.frame = view.bounds
-        //        childViewController.view.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+                subview.addSubview(childViewController.view)
+//                childViewController.view.frame = view.bounds
+//
+               childViewController.view.autoresizingMask = [.flexibleWidth,.flexibleHeight]
         childViewController.didMove(toParentViewController: self)
     }
     

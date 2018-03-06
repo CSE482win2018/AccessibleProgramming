@@ -16,7 +16,7 @@ class DoActivityTableViewController: UITableViewController {
     var activities=[Activity]()
     var selectedIndex = 0;
     var seletedIndexPath: IndexPath?;
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Load any saved meals, otherwise load sample data.
@@ -31,6 +31,7 @@ class DoActivityTableViewController: UITableViewController {
             // Load the sample data.
             //            loadSampleActivities()
         }
+        indexHasSet = false
     }
     //    func setParent(segue: UIStoryboardSegue) {
     //        if (segue.identifier == "ListToTable") {
@@ -68,25 +69,30 @@ class DoActivityTableViewController: UITableViewController {
         return cell
     }
     
+    var indexHasSet: Bool?
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex = indexPath.row
         seletedIndexPath = tableView.indexPathForSelectedRow
+        indexHasSet = true
         performSegue(withIdentifier: "doActivity", sender: self)
     }
     
-    
-   
-    
-    
- 
+    var eternalBlockViewController : BlocksViewController?
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         switch (segue.identifier ?? "") {
         case "doActivity":
-            let dovc = segue.destination as! BlocksViewController
-            dovc.activity = activities[selectedIndex]
+            if (eternalBlockViewController == nil) {
+                let dovc = segue.destination as! BlocksViewController
+                eternalBlockViewController = dovc
+            }
+            if (indexHasSet)! {
+                
+                eternalBlockViewController?.activity = activities[selectedIndex]
+                eternalBlockViewController?.viewDidLoad()
+            }
             
           
             break

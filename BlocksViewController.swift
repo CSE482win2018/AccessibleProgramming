@@ -43,11 +43,11 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
     var hintCtr=0
     @IBOutlet weak var activityName: UILabel!
     var activity: Activity?
-    var description_text="Your task today is to make a loud crocodile sound! To complete the activity find the crocadile sound in the blocks menu and place it in the block program, then press play to hear the crocadile roar!"
+    var description_text="Your task today is to make a loud crocodile sound! To complete the activity find the crocodile sound in the blocks menu and place it in the program space, then press play to hear the crocodile roar!"
 
     var dragOn = false
     
-    var answer=["Make Crocodile Noise"]
+    var answer : [Block]?
 
     @IBOutlet weak var FeedBackText: UITextView!
     @IBOutlet weak var menuButton: UIButton!
@@ -82,6 +82,7 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
             blocksStack.removeAll()
             blocksStack += (activity?.startBlocks)!
             hints = activity?.hints
+            answer = activity?.solutionBlocksName
 
         }
         blocksProgram.reloadData()
@@ -660,43 +661,66 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
     
     // run code
     @IBAction func checkAnswer(_ sender: Any) {
-        var nameArr: [String]=[]
-        for block in blocksStack{
-            nameArr.append(block.name)
+        var ansSet = Set<String>()
+        for b in answer! {
+            ansSet.insert(b.name)
         }
-        if (nameArr.count==0){
+        var inputBlock: [String]=[]
+        for block in blocksStack{
+            inputBlock.append(block.name)
+        }
+        if (inputBlock.count==0){
             let announcement = "You haven't picked any blocks yet, try adding some and test your answer again."
             FeedBackText.text = announcement
             UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
-
-        }
-        else if (nameArr.count==answer.count){
-            for i in 0..<nameArr.count{
-                if(nameArr[i] != answer[i]){
-                    let announcement = "Im sorry thats not quite right, at least block "+String(i)+" is not correct."
-                    FeedBackText.text = announcement
-
-                    UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
-                    return
-
-                }
-                else{
-                    let announcement = "Congratulations! That's correct"
-                    FeedBackText.text = announcement
-
-                    UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
-                    return
-
-                }
-            }
-        }
-        else{
-            let announcement = "Im sorry thats not quite right, Please try again"
-            FeedBackText.text = announcement
-           UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
             return
         }
-        blocksProgram.reloadData()
+        
+        
+        
+        if (inputBlock.count != ansSet.count){
+            var goodcount = 0
+            var badcount = 0
+            for i in 0..<inputBlock.count {
+                if (ansSet.contains(inputBlock[i])) {
+                    goodcount = goodcount + 1
+                } else {
+                    badcount = badcount + 1
+                }
+            }
+            let announcement = "There are \(goodcount) correct blocks and \(badcount) incorrect blocks. Please try again."
+            FeedBackText.text = announcement
+            UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
+            return
+        } else {
+            var incorrectBlocksList = [String]()
+            for i in 0..<inputBlock.count{
+                if(inputBlock[i] != answer![i].name){
+                    incorrectBlocksList.append(String(i+1))
+                    
+                }
+            }
+            
+            if (incorrectBlocksList.count == 0) {
+                let announcement = "Congratulations! That's correct!"
+                FeedBackText.text = announcement
+                
+                UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
+                return
+            } else {
+                var str = "I'm sorry that's not quite right, try changing the "
+                for i in 0..<incorrectBlocksList.count {
+                    str += incorrectBlocksList[i] + " "
+                }
+                let announcement = str + " block."
+                FeedBackText.text = announcement
+                
+                UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
+                return
+                
+            }
+        }
+        
         
     }
     

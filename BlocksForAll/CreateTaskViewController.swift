@@ -25,13 +25,32 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
     
     @IBOutlet weak var showInDoActivitySwitch: UISwitch!
     
+    var tableIndex : Int = 0
+    var tableIndexPath: IndexPath?
     
     var solutionBlocksName = [Block]()
     var startBlocks = [Block]()
-
+    
+    
+    var audioPlayer: AVAudioPlayer?
+    var audioRecorder: AVAudioRecorder?
+    var audioFileName :String!
+    
+    var blocksViewController : BlocksViewController?
+    var startBlocksViewController : BlocksViewController?
+    var hintsTableViewController : ManageHintsTableViewController?
+    
+    var descripURL:URL!
+    
+    
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
+    
+    
+    
+    
+    
     @IBAction func recordAudio(_ sender: Any) {
         if audioRecorder?.isRecording == false {
             playButton.isEnabled = false
@@ -75,32 +94,23 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
     }
     
    
-    var audioPlayer: AVAudioPlayer?
-    var audioRecorder: AVAudioRecorder?
-    
-    var audioFileName :String!
-    var blocksViewController = BlocksViewController()
-    var startBlocksViewController = BlocksViewController()
-    var hintsTableViewController = ManageHintsTableViewController()
-    var descripURL:URL!
-    
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "blocksViewController") as! BlocksViewController
         blocksViewController = vc
-        self.blocksViewController.parentController = self
-        addViewControllerAsChildViewController(childViewController: vc)
+        self.blocksViewController?.parentController = self
+        addViewControllerAsChildViewController(view: blocksView, childViewController: vc)
         
         let startBlocksViewControllerVC = self.storyboard?.instantiateViewController(withIdentifier: "startBlocksViewController") as! BlocksViewController
         startBlocksViewController = startBlocksViewControllerVC
-        self.startBlocksViewController.parentController = self
-        addViewControllerAsChildViewController(childViewController: startBlocksViewControllerVC)
+        self.startBlocksViewController?.parentController = self
+        addViewControllerAsChildViewController(view: startBlocksView, childViewController: startBlocksViewControllerVC)
         
         
         let hvc = self.storyboard?.instantiateViewController(withIdentifier: "manageHintsTableViewController") as! ManageHintsTableViewController
         hintsTableViewController = hvc
-        addViewControllerAsChildViewController(childViewController: hvc)
+        addViewControllerAsChildViewController(view: hintsView, childViewController: hvc)
         
 
         
@@ -163,6 +173,11 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
         }
     }
     
+    func memorizeIndex(selectedIndex: Int,seletedIndexPath: IndexPath?) {
+        tableIndex = selectedIndex
+        tableIndexPath = seletedIndexPath
+    }
+    
     func reloadActivity() {
         justLoad = 0
         showInDoActivitySwitch.isOn = (activity?.showInDoActivity)!
@@ -170,12 +185,12 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
         activity_descrip.text = activity?.descrip
         solutionBlocksName.removeAll()
         solutionBlocksName = (activity?.solutionBlocksName)!
-        blocksViewController.reloadBlocks(savedblocks: solutionBlocksName)
+        blocksViewController?.reloadBlocks(savedblocks: solutionBlocksName)
         getBlocksFlag = 0
         startBlocks.removeAll()
         startBlocks = (activity?.startBlocks)!
         getBlocksFlag = 1
-        startBlocksViewController.reloadBlocks(savedblocks: startBlocks)
+        startBlocksViewController?.reloadBlocks(savedblocks: startBlocks)
         descripURL = activity?.audioURL
         do {
             try audioPlayer = AVAudioPlayer(contentsOf:
@@ -217,13 +232,13 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
             blocksView.isHidden = false
             startBlocksView.isHidden = true
             getBlocksFlag = 0
-            blocksViewController.reloadBlocks(savedblocks: solutionBlocksName)
+            blocksViewController?.reloadBlocks(savedblocks: solutionBlocksName)
         case 2:
             instructionView.isHidden = true
             blocksView.isHidden = true
             startBlocksView.isHidden = false
             getBlocksFlag = 1
-            startBlocksViewController.reloadBlocks(savedblocks: startBlocks)
+            startBlocksViewController?.reloadBlocks(savedblocks: startBlocks)
         default:
             break
         }
@@ -260,7 +275,7 @@ var getBlocksFlag = 0
         let solutionBlocks = self.solutionBlocksName
         let startBlocks = self.startBlocks
         let showInDoActivity = showInDoActivitySwitch.isOn
-        let hints = hintsTableViewController.hints
+        let hints = hintsTableViewController?.hints
         var url : URL
         if (!hasRecord!) {
             url = descripURL
@@ -276,9 +291,9 @@ var getBlocksFlag = 0
         if (justLoad>0) {
             
             if (getBlocksFlag == 0) {
-                blocksViewController.sendDataToVc()
+                blocksViewController?.sendDataToVc()
             } else {
-                startBlocksViewController.sendDataToVc()
+                startBlocksViewController?.sendDataToVc()
             }
         } else {
             justLoad = 1
@@ -313,9 +328,9 @@ var getBlocksFlag = 0
     }
 
     
-    private func addViewControllerAsChildViewController(childViewController: UIViewController) {
+    private func addViewControllerAsChildViewController(view: UIView, childViewController: UIViewController) {
         addChildViewController(childViewController)
-//        view.addSubview(childViewController.view)
+        view.addSubview(childViewController.view)
 //        childViewController.view.frame = view.bounds
 //        childViewController.view.autoresizingMask = [.flexibleWidth,.flexibleHeight]
         childViewController.didMove(toParentViewController: self)

@@ -902,9 +902,8 @@
                                         <rect key="frame" x="0.0" y="471" width="141" height="130"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                        <state key="normal" title="Play HInt"/>
+                                        <state key="normal" title="Play Hint"/>
                                         <connections>
-                                            <action selector="playHInt:" destination="yvW-HD-LK6" eventType="touchUpInside" id="plS-g8-tRR"/>
                                             <action selector="playHint:" destination="yvW-HD-LK6" eventType="touchUpInside" id="70E-pD-yhm"/>
                                         </connections>
                                     </button>
@@ -972,7 +971,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SDf-0d-6QW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-872.4609375" y="-1566.40625"/>
+            <point key="canvasLocation" x="-1242" y="-2141"/>
         </scene>
         <!--Block Table View Controller-->
         <scene sceneID="Wvh-6R-5jP">
@@ -1159,6 +1158,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <connections>
+                        <outlet property="subview" destination="rfQ-7T-3X4" id="yUv-uQ-Dhg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="60P-jA-dNm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1585,7 +1587,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cm6-Im-Mqz"/>
-        <segue reference="7iB-dr-bDT"/>
+        <segue reference="v8X-OA-NLZ"/>
         <segue reference="u2L-dd-czE"/>
     </inferredMetricsTieBreakers>
 </document>
