@@ -267,7 +267,7 @@ var getBlocksFlag = 0
         } else {
             url = (audioRecorder?.url)!
         }
-        activity = Activity(name: name!, descrip: descrip,  solutionBlocksName: solutionBlocks, startBlocks: startBlocks, showInDoActivity: showInDoActivity, hints: hints as! [(String, URL)],audioURL: url)
+        activity = Activity(name: name!, descrip: descrip,  solutionBlocksName: solutionBlocks, startBlocks: startBlocks, showInDoActivity: showInDoActivity, hints: hints ,audioURL: url)
 
         
     }
