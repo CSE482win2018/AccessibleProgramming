@@ -105,7 +105,7 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
     }
     @IBAction func playDesc(_ sender: Any) {
        // print(activity?.audioURL)
-        
+       
         do {
             let url = activity?.audioURL
             self.audioPlayer = try AVAudioPlayer(contentsOf: url!)
@@ -116,27 +116,44 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
         } catch let error as NSError {
             //self.player = nil
             print(error.localizedDescription)
+            let announcement = "There is no audio recoded for this Activity"
+            FeedBackText.text = announcement
+            if UIAccessibilityIsVoiceOverRunning(){
+                sleep(2)
+            }
+            UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
         } catch {
             print("AVAudioPlayer init failed")
+        
         }
     }
     
     @IBAction func playHint(_ sender: Any) {
-        let announcement = hints![hintCtr].0
-        FeedBackText.text = announcement
-        UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
-        do {
-            self.audioPlayer! = try AVAudioPlayer(contentsOf: hints![hintCtr].1)
-            audioPlayer!.prepareToPlay()
-            audioPlayer!.volume = 1.0
-            audioPlayer!.play()
-        } catch let error as NSError {
-            //self.player = nil
-            print(error.localizedDescription)
-        } catch {
-            print("AVAudioPlayer init failed")
+        if hints != nil{
+            let announcement = hints![hintCtr].0
+            FeedBackText.text = announcement
+            if UIAccessibilityIsVoiceOverRunning(){
+                sleep(2)
+            }
+            UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
+            do {
+                self.audioPlayer! = try AVAudioPlayer(contentsOf: hints![hintCtr].1)
+                audioPlayer!.prepareToPlay()
+                audioPlayer!.volume = 1.0
+                audioPlayer!.play()
+            } catch let error as NSError {
+                //self.player = nil
+                print(error.localizedDescription)
+            } catch {
+                print("AVAudioPlayer init failed")
+            }
+            hintCtr = (hintCtr+1) % (hints?.count)!
         }
-        hintCtr = (hintCtr+1) % (hints?.count)!
+        else{
+            let announcement = "There are no hints for this Activity"
+            FeedBackText.text = announcement
+            UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
+        }
     }
     // MARK: - Block Selection Delegate
     func unsetBlocks() {
@@ -685,6 +702,9 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
         if (inputBlock.count==0){
             let announcement = "You haven't picked any blocks yet, try adding some and test your answer again."
             FeedBackText.text = announcement
+            if UIAccessibilityIsVoiceOverRunning(){
+                sleep(2)
+            }
             UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
             return
         }
@@ -703,6 +723,9 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
             }
             let announcement = "There are \(goodcount) correct blocks and \(badcount) incorrect blocks. Please try again."
             FeedBackText.text = announcement
+            if UIAccessibilityIsVoiceOverRunning(){
+                sleep(2)
+            }
             UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
             return
         } else {
@@ -717,7 +740,9 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
             if (incorrectBlocksList.count == 0) {
                 let announcement = "Congratulations! That's correct!"
                 FeedBackText.text = announcement
-                
+                if UIAccessibilityIsVoiceOverRunning(){
+                    sleep(2)
+                }
                 UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
                 return
             } else {
@@ -727,7 +752,9 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
                 }
                 let announcement = str + " block."
                 FeedBackText.text = announcement
-                
+                if UIAccessibilityIsVoiceOverRunning(){
+                    sleep(2)
+                }
                 UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
                 return
                 

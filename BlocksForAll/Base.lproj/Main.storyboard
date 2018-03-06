@@ -162,6 +162,7 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mKS-IF-FT5">
                                 <rect key="frame" x="146" y="58" width="97" height="30"/>
+                                <accessibility key="accessibilityConfiguration" label="Activity name text field"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="97" id="FJs-MF-fKG"/>
                                 </constraints>
@@ -1220,7 +1221,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="392" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CRv-rF-G8a">
+                                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CRv-rF-G8a">
                                             <rect key="frame" x="0.0" y="11" width="159" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <accessibility key="accessibilityConfiguration" label="Type a hint in this text field"/>
@@ -1613,6 +1614,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="cm6-Im-Mqz"/>
         <segue reference="v8X-OA-NLZ"/>
-        <segue reference="u2L-dd-czE"/>
+        <segue reference="SwJ-uT-SUQ"/>
     </inferredMetricsTieBreakers>
 </document>

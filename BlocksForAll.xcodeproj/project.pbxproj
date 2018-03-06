@@ -166,9 +166,9 @@
 		F18FFFB11E65B0FB0090C4B6 /* BlocksForAll */ = {
 			isa = PBXGroup;
 			children = (
+				030B3F5E203BDEBD00D8D596 /* ManageActivitiesTableViewController.swift */,
 				7F6B77D4204087BA003D52FA /* BlocksForAll.entitlements */,
 				030B3F5F203BDEBD00D8D596 /* ManageActivitiesTableViewCell.swift */,
-				030B3F5E203BDEBD00D8D596 /* ManageActivitiesTableViewController.swift */,
 				701A43861EC26EFD00314599 /* BlocksViewController.swift */,
 				F186EB851EE0D73500C2FA4B /* SelectedBlockViewController.swift */,
 				F10F71681E65BFF50049F3AA /* Block.swift */,
@@ -259,7 +259,7 @@
 				TargetAttributes = {
 					F18FFFAE1E65B0FB0090C4B6 = {
 						CreatedOnToolsVersion = 8.2.1;
-                        DevelopmentTeam = 46384CH3SR;
+						DevelopmentTeam = R9G4L7NLF4;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.InterAppAudio = {

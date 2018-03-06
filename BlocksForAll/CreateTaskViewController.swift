@@ -282,7 +282,7 @@ var getBlocksFlag = 0
         let solutionBlocks = self.solutionBlocksName
         let startBlocks = self.startBlocks
         let showInDoActivity = showInDoActivitySwitch.isOn
-        let hints = self.hints
+        let hints = hintsTableViewController?.hints
         var url : URL
         if (!hasRecord!) {
             url = descripURL
