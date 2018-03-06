@@ -8,14 +8,14 @@
 
 import UIKit
 
-class ManageHintsTableViewController: UITableViewController {
+class ManageHintsTableViewController: UITableViewController,UITextFieldDelegate {
     var hints:[(String,URL?)]=[]
     var parentVC : CreateTaskViewController?
     @IBOutlet weak var addNewHintButton: UIButton!
     @IBAction func addNewhint(_ sender: Any) {
         print("in here")
         
-        hints.append(("AddHint",URL(string:"https://www.apple.com")))
+        hints.append(("",URL(string:"https://www.apple.com")))
         tableView.reloadData()
     }
     
@@ -48,6 +48,7 @@ class ManageHintsTableViewController: UITableViewController {
         }
         
     }
+   
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return hints.count
     }
@@ -55,16 +56,43 @@ class ManageHintsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "ManageHintsTableViewCell"
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ManageHintsTableViewCell else{
-                fatalError("dequed cell was not a hint")
-            }
+        if hints[indexPath.row].0 == ""{
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ManageHintsTableViewCell else{
+                    fatalError("dequed cell was not a hint")
+                }
+            
+            let hint = hints[indexPath.row]
+            // Configure the cell...
+            cell.hintText.text=hint.0
+            cell.fileURL = hint.1
+            cell.viewController=self
+            cell.hintText.tag = indexPath.row
+            cell.hintText.delegate = self
+            return cell
+        }
+        else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+            cell.textLabel?.text = hints[indexPath.row].0
+            return cell
+        }
+    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {      //delegate method
+        print("in did begin editing")
+        //you will get the row. items[textField.tag] will get the object
         
-        let hint = hints[indexPath.row]
-        // Configure the cell...
-        cell.hintText.text=hint.0
-        cell.fileURL = hint.1
-        cell.viewController=self
-        return cell
+    }
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {   //delegate method
+        print(textField.tag)
+        print("in Should End Editing")//you will get the row. items[textField.tag] will get the object
+        hints[textField.tag].0 = textField.text!
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {     //delegate method
+        print("in should return")
+        textField.resignFirstResponder()
+        return true
     }
     func randomAlphaNumericString(length: Int) -> String {
         let allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"

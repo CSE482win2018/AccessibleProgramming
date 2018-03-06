@@ -33,7 +33,7 @@ class ManageHintsTableViewCell: UITableViewCell, AVAudioPlayerDelegate, AVAudioR
             audioRecorder?.record()
         }
     }
-    
+   
     @IBAction func stopAudio(_ sender: Any) {
         stopButton.isEnabled = false
         playButton.isEnabled = true
@@ -74,7 +74,7 @@ class ManageHintsTableViewCell: UITableViewCell, AVAudioPlayerDelegate, AVAudioR
                                     in: .userDomainMask)
         let soundFileURL = dirPaths[0].appendingPathComponent(self.audioFileName!)
         self.fileURL=soundFileURL
-        self.viewController?.hints[(self.viewController?.hints.count)!-1].1=soundFileURL
+        //self.viewController?.addURL(cell: self)
         let recordSettings =
             [AVEncoderAudioQualityKey: AVAudioQuality.min.rawValue,
              AVEncoderBitRateKey: 16,

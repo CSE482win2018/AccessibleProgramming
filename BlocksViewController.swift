@@ -104,7 +104,7 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
         // Dispose of any resources that can be recreated.
     }
     @IBAction func playDesc(_ sender: Any) {
-        print(activity?.audioURL)
+       // print(activity?.audioURL)
         
         do {
             let url = activity?.audioURL
