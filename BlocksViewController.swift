@@ -85,6 +85,15 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
             answer = activity?.solutionBlocksName
 
         }
+        let audioSession = AVAudioSession.sharedInstance()
+        
+        do {
+            try audioSession.setCategory(
+                AVAudioSessionCategoryPlayAndRecord)
+        } catch let error as NSError {
+            print("audioSession error: \(error.localizedDescription)")
+        }
+        
         blocksProgram.reloadData()
 
     }
@@ -95,8 +104,11 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
         // Dispose of any resources that can be recreated.
     }
     @IBAction func playDesc(_ sender: Any) {
+        print(activity?.audioURL)
+        
         do {
-            self.audioPlayer! = try AVAudioPlayer(contentsOf: (activity?.audioURL)!)
+            let url = activity?.audioURL
+            self.audioPlayer! = try AVAudioPlayer(contentsOf: url!)
             audioPlayer!.prepareToPlay()
             audioPlayer!.volume = 1.0
             audioPlayer!.play()

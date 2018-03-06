@@ -55,7 +55,9 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
         if audioRecorder?.isRecording == false {
             playButton.isEnabled = false
             stopButton.isEnabled = true
+            
             audioRecorder?.record()
+            recordButton.setTitle("..Recording..", for: .normal)
             hasRecord = true
         }
     }
@@ -67,8 +69,10 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
         
         if audioRecorder?.isRecording == true {
             audioRecorder?.stop()
+            recordButton.setTitle("Record", for: .normal)
         } else {
             audioPlayer?.stop()
+            recordButton.setTitle("Record", for: .normal)
         }
     }
     @IBAction func playAudio(_ sender: Any) {
@@ -282,7 +286,7 @@ var getBlocksFlag = 0
         } else {
             url = (audioRecorder?.url)!
         }
-        activity = Activity(name: name!, descrip: descrip,  solutionBlocksName: solutionBlocks, startBlocks: startBlocks, showInDoActivity: showInDoActivity, hints: hints ,audioURL: url)
+        activity = Activity(name: name!, descrip: descrip,  solutionBlocksName: solutionBlocks, startBlocks: startBlocks, showInDoActivity: showInDoActivity, hints: hints! as! [(String, URL)] ,audioURL: url)
 
         
     }

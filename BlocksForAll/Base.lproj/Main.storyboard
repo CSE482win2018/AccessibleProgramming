@@ -219,7 +219,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IR4-jR-0zg" userLabel="playButton">
                                         <rect key="frame" x="390" y="241" width="113" height="66"/>
-                                        <color key="backgroundColor" red="1" green="0.24969744490000001" blue="0.1533946149" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.12928424355647747" green="0.38756881479533678" blue="0.2801104236557409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <accessibility key="accessibilityConfiguration" identifier="playButton" label="Play Button"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="66" id="eps-rT-sOB"/>
@@ -231,9 +231,9 @@
                                             <action selector="playAudio:" destination="lNT-ru-Aar" eventType="touchUpInside" id="6q0-1U-Ccg"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Bf-2B-vYX" userLabel="stopButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Bf-2B-vYX" userLabel="stopButton" colorLabel="IBBuiltInLabel-Red">
                                         <rect key="frame" x="390" y="135" width="113" height="66"/>
-                                        <color key="backgroundColor" red="1" green="0.24969744490000001" blue="0.1533946149" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <accessibility key="accessibilityConfiguration" identifier="stopButton" label="Stop Button"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="66" id="Btc-4B-NbX"/>
@@ -1588,6 +1588,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="cm6-Im-Mqz"/>
         <segue reference="v8X-OA-NLZ"/>
-        <segue reference="u2L-dd-czE"/>
+        <segue reference="SwJ-uT-SUQ"/>
     </inferredMetricsTieBreakers>
 </document>
