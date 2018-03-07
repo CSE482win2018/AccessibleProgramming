@@ -126,7 +126,7 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
         
         playButton.isEnabled = false
         stopButton.isEnabled = false
-        
+        recordButton.setTitle("Record", for: .normal)
         let fileMgr = FileManager.default
         
         let dirPaths = fileMgr.urls(for: .documentDirectory,
