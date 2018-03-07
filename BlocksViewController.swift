@@ -78,7 +78,7 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
         // Do Acitvity Data Fetch
         if (activity != nil) {
             activityName.text = "Activity Name: " + (activity?.name)!
-            shownDecription?.text = "Description: \n" + (activity?.descrip)!
+            shownDecription?.text = "Description:" + (activity?.descrip)!
             blocksStack.removeAll()
             blocksStack += (activity?.startBlocks)!
             hints = activity?.hints

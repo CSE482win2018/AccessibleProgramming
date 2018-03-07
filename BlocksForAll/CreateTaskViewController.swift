@@ -57,7 +57,7 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
             stopButton.isEnabled = true
             
             audioRecorder?.record()
-            recordButton.setTitle("..Recording..", for: .normal)
+            recordButton.setTitle("Recording...", for: .normal)
             hasRecord = true
         }
     }
