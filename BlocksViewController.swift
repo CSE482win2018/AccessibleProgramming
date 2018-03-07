@@ -371,7 +371,7 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
         var size = CGSize(width: CGFloat(blockWidth), height: collectionView.frame.height)
         
         if indexPath.row == blocksStack.count {
-            if blocksStack.count < 8 {
+            if blocksStack.count < 4 {
                 //fill up the rest of the screen
                 let myWidth = collectionView.frame.width - CGFloat(blocksStack.count) * CGFloat(blockWidth)
                 size = CGSize(width: myWidth, height: collectionView.frame.height)

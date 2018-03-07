@@ -259,7 +259,7 @@
 				TargetAttributes = {
 					F18FFFAE1E65B0FB0090C4B6 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = R9G4L7NLF4;
+						DevelopmentTeam = 46384CH3SR;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.InterAppAudio = {
@@ -482,7 +482,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = R9G4L7NLF4;
+				DEVELOPMENT_TEAM = 46384CH3SR;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -490,7 +490,7 @@
 				);
 				INFOPLIST_FILE = BlocksForAll/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "goatfossil-gmail.com";
+				PRODUCT_BUNDLE_IDENTIFIER = "goatfoslllsil-gmail.com";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "BlocksForAll/BlocksForAll-Bridging-Header.h";
@@ -504,7 +504,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = R9G4L7NLF4;
+				DEVELOPMENT_TEAM = 46384CH3SR;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -512,7 +512,7 @@
 				);
 				INFOPLIST_FILE = BlocksForAll/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "goatfossil-gmail.com";
+				PRODUCT_BUNDLE_IDENTIFIER = "goatfoslllsil-gmail.com";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "BlocksForAll/BlocksForAll-Bridging-Header.h";
