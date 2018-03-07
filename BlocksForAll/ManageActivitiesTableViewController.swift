@@ -22,12 +22,17 @@ class ManageActivitiesTableViewController: UITableViewController {
         // Load any saved meals, otherwise load sample data.
         if let savedActivities = loadActivities() {
             activities.removeAll()
-            activities += savedActivities
+            if (savedActivities.count <= 0) {
+                loadSampleActivities()
+            } else {
+                
+                activities += savedActivities
+            }
+        } else {
+            loadSampleActivities()
         }
-        else {
-            // Load the sample data.
-//            loadSampleActivities()
-        }
+        
+        
     }
 //    func setParent(segue: UIStoryboardSegue) {
 //        if (segue.identifier == "ListToTable") {
@@ -189,14 +194,18 @@ class ManageActivitiesTableViewController: UITableViewController {
     }
     //MARK: Private Methods
     
-//    private func loadSampleActivities() {
-//        let photo1 = UIImage(named: "wiggle")
-//        let longString = "Your task today is to make a loud crocodile sound! To complete the activity find the crocadile sound in the blocks menu and place it in the block program, then press play to hear the crocadile roar!"
-//        guard let act1=Activity(name: "Croc", descrip: longString, photo: photo1!, solutionBlocksName: ["Make Crocodile Noise"]) else{
-//            fatalError("Unable to Load Activity")
-//        }
-//        activities+=[act1]
-//    }
+    private func loadSampleActivities() {
+        let photo1 = UIImage(named: "wiggle")
+        let longString = "Your task today is to make a loud crocodile sound! To complete the activity find the crocadile sound in the blocks menu and place it in the block program, then press play to hear the crocadile roar!"
+        var solu = [Block]()
+        let block = Block(name: "Make Crocodile Noise", color: UIColor.green, double: false, editable: false, imageName: "crocodile_sound.png", type: "Statement")
+        solu.append(block!)
+        guard let act1=Activity(name: "Sample Activity", descrip: longString, solutionBlocksName: solu, startBlocks: [Block](), showInDoActivity: true,hints:[(String,URL)](),audioURL: URL(string:"https://www.apple.com")) else{
+            fatalError("Unable to Load Activity")
+        }
+        activities.append(act1)
+        saveActivities()
+    }
     
     private func saveActivities() {
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(activities, toFile: Activity.ArchiveURL.path)

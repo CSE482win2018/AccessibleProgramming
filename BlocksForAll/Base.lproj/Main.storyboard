@@ -54,7 +54,7 @@
                                 <rect key="frame" x="158" y="474" width="286" height="101"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <state key="normal" title="Manage Activity">
+                                <state key="normal" title="Edit Activity">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -1609,8 +1609,8 @@
         <image name="wiggle" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cm6-Im-Mqz"/>
-        <segue reference="v8X-OA-NLZ"/>
+        <segue reference="M5E-Q8-fiS"/>
+        <segue reference="K1M-0W-nf3"/>
         <segue reference="u2L-dd-czE"/>
     </inferredMetricsTieBreakers>
 </document>
