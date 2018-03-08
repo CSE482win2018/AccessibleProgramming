@@ -55,6 +55,8 @@ class ManageHintsTableViewController: UITableViewController,UITextFieldDelegate 
         return hints.count
     }
     
+    
+    
 //
     /*
      // Override to support conditional rearranging of the table view.
@@ -63,7 +65,13 @@ class ManageHintsTableViewController: UITableViewController,UITextFieldDelegate 
      return true
      }
      */
-    
+    func updateURL() {
+        var cells = tableView.visibleCells
+        for i in 0...cells.count-1 {
+            let c = cells[i] as? ManageHintsTableViewCell
+            hints[i].1 = c?.fileURL
+        }
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "ManageHintsTableViewCell"
