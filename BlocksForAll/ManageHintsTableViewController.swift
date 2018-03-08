@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ManageHintsTableViewController: UITableViewController,UITextFieldDelegate {
     var hints:[(String,URL?)]=[]
@@ -63,6 +64,7 @@ class ManageHintsTableViewController: UITableViewController,UITextFieldDelegate 
      }
      */
     
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "ManageHintsTableViewCell"
         if hints[indexPath.row].0 == ""{
@@ -91,6 +93,32 @@ class ManageHintsTableViewController: UITableViewController,UITextFieldDelegate 
             cell.viewController=self
             cell.hintText.tag = indexPath.row
             cell.hintText.delegate = self
+            cell.isOld = true
+            cell.playButton.isEnabled = true
+//            // set up record
+//            let recordSettings =
+//                [AVEncoderAudioQualityKey: AVAudioQuality.min.rawValue,
+//                 AVEncoderBitRateKey: 16,
+//                 AVNumberOfChannelsKey: 2,
+//                 AVSampleRateKey: 44100.0] as [String : Any]
+//
+//            do {
+//                try cell.audioRecorder = AVAudioRecorder(url: cell.fileURL,
+//                                                    settings: recordSettings as [String : AnyObject])
+//                cell.audioRecorder?.prepareToRecord()
+//            } catch let error as NSError {
+//                print("audioSession error: \(error.localizedDescription)")
+//            }
+            // set up playing
+//            do {
+//                cell.playButton.isEnabled = true
+//                try cell.audioPlayer = AVAudioPlayer(contentsOf:
+//                    cell.fileURL)
+//                cell.audioPlayer!.delegate = cell
+//                cell.audioPlayer!.prepareToPlay()
+//            } catch let error as NSError {
+//                print("audioPlayer error: \(error.localizedDescription)")
+//            }
             return cell
 //            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ManageHintsTableViewCell
 //            cell?.textLabel?.text = hints[indexPath.row].0

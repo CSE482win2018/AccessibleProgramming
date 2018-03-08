@@ -16,6 +16,8 @@ class ManageHintsTableViewCell: UITableViewCell, AVAudioPlayerDelegate, AVAudioR
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
     
+    var isOld = false
+    
     @IBOutlet weak var deleteButton: UIButton!
     var viewController: ManageHintsTableViewController?
     var audioFileName: String?
@@ -31,6 +33,7 @@ class ManageHintsTableViewCell: UITableViewCell, AVAudioPlayerDelegate, AVAudioR
             playButton.isEnabled = false
             stopButton.isEnabled = true
             audioRecorder?.record()
+            isOld = false
         }
     }
    
@@ -49,10 +52,16 @@ class ManageHintsTableViewCell: UITableViewCell, AVAudioPlayerDelegate, AVAudioR
         if audioRecorder?.isRecording == false {
             stopButton.isEnabled = true
             recordButton.isEnabled = false
-            
+            var url : URL
+            if (isOld) {
+                url = fileURL
+            } else {
+                url = (audioRecorder?.url)!
+                fileURL = url
+            }
             do {
                 try audioPlayer = AVAudioPlayer(contentsOf:
-                    (audioRecorder?.url)!)
+                    url)
                 audioPlayer!.delegate = self
                 audioPlayer!.prepareToPlay()
                 audioPlayer!.play()
@@ -60,6 +69,22 @@ class ManageHintsTableViewCell: UITableViewCell, AVAudioPlayerDelegate, AVAudioR
                 print("audioPlayer error: \(error.localizedDescription)")
             }
         }
+        
+//        
+//        if audioRecorder?.isRecording == false {
+//            stopButton.isEnabled = true
+//            recordButton.isEnabled = false
+//            
+//            do {
+//                try audioPlayer = AVAudioPlayer(contentsOf:
+//                    (audioRecorder?.url)!)
+//                audioPlayer!.delegate = self
+//                audioPlayer!.prepareToPlay()
+//                audioPlayer!.play()
+//            } catch let error as NSError {
+//                print("audioPlayer error: \(error.localizedDescription)")
+//            }
+//        }
     }
     var audioPlayer: AVAudioPlayer?
     var audioRecorder: AVAudioRecorder?
