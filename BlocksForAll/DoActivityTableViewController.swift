@@ -36,7 +36,7 @@ class DoActivityTableViewController: UITableViewController {
         }
         else {
             // Load the sample data.
-            //            loadSampleActivities()
+                        loadSampleActivities()
         }
         indexHasSet = false
     }
