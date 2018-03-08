@@ -26,7 +26,7 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
 
     var parentController: CreateTaskViewController?
     var audioPlayer: AVAudioPlayer?
-    var hints:[(String,URL)]?
+    var hints:[(String,URL?)]?
     @IBOutlet weak var blocksProgram: UICollectionView!
     @IBOutlet weak var playTrashToggleButton: UIButton!
     
@@ -137,7 +137,7 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
             }
             UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
             do {
-                self.audioPlayer! = try AVAudioPlayer(contentsOf: hints![hintCtr].1)
+                self.audioPlayer! = try AVAudioPlayer(contentsOf: hints![hintCtr].1!)
                 audioPlayer!.prepareToPlay()
                 audioPlayer!.volume = 1.0
                 audioPlayer!.play()

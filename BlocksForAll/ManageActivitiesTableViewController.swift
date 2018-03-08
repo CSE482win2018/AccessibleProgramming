@@ -200,7 +200,7 @@ class ManageActivitiesTableViewController: UITableViewController {
         var solu = [Block]()
         let block = Block(name: "Make Crocodile Noise", color: UIColor.green, double: false, editable: false, imageName: "crocodile_sound.png", type: "Statement")
         solu.append(block!)
-        guard let act1=Activity(name: "Sample Activity", descrip: longString, solutionBlocksName: solu, startBlocks: [Block](), showInDoActivity: true,hints:[(String,URL)](),audioURL: URL(string:"https://www.apple.com")) else{
+        guard let act1=Activity(name: "Sample Activity", descrip: longString, solutionBlocksName: solu, startBlocks: [Block](), showInDoActivity: true,hints:[(String,URL?)](),audioURL: URL(string:"https://www.apple.com")) else{
             fatalError("Unable to Load Activity")
         }
         activities.append(act1)

@@ -80,9 +80,8 @@ class ManageHintsTableViewCell: UITableViewCell, AVAudioPlayerDelegate, AVAudioR
              AVEncoderBitRateKey: 16,
              AVNumberOfChannelsKey: 2,
              AVSampleRateKey: 44100.0] as [String : Any]
-        
+
         let audioSession = AVAudioSession.sharedInstance()
-        
         do {
             try audioSession.setCategory(
                 AVAudioSessionCategoryPlayAndRecord)

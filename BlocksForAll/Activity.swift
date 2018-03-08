@@ -21,7 +21,7 @@ class Activity: NSObject, NSCoding {
     var startBlocks: [Block]
     var showInDoActivity: Bool
     var audioURL: URL
-    var hints:[(String,URL)]
+    var hints:[(String,URL?)]
     struct PropertyKey {
         static let name = "name"
         static let descrip = "descrip"
@@ -38,7 +38,7 @@ class Activity: NSObject, NSCoding {
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("activities")
     
     //MARK: Initialization
-    init?(name: String, descrip: String?, solutionBlocksName: [Block]?, startBlocks: [Block]?, showInDoActivity: Bool,hints:[(String,URL)],audioURL:URL?) {
+    init?(name: String, descrip: String?, solutionBlocksName: [Block]?, startBlocks: [Block]?, showInDoActivity: Bool,hints:[(String,URL?)]?,audioURL:URL?) {
         
         // The name must not be empty
         guard !name.isEmpty else {
@@ -61,7 +61,7 @@ class Activity: NSObject, NSCoding {
         self.solutionBlocksName = solutionBlocksName!
         self.startBlocks = startBlocks!
         self.showInDoActivity = showInDoActivity
-        self.hints = hints
+        self.hints = hints!
         self.audioURL = audioURL!
     }
     
@@ -89,10 +89,10 @@ class Activity: NSObject, NSCoding {
         let startBlocks = aDecoder.decodeObject(forKey: PropertyKey.startBlocks) as? [Block]
         //        let hints = aDecoder.decodeObject(forKey: PropertyKey.hints) as? [String]
         let showInDoActivity = aDecoder.decodeBool(forKey: PropertyKey.showInDoActivity) as Bool
-        let hints = aDecoder.decodeObject(forKey: PropertyKey.hints) as? [(String,URL)]?
-        let audioURL = aDecoder.decodeObject(forKey: PropertyKey.audioURL) as? URL?
+        let hints = aDecoder.decodeObject(forKey: PropertyKey.hints) as? [(String,URL?)]
+        let audioURL = aDecoder.decodeObject(forKey: PropertyKey.audioURL) as? URL
         // Must call designated initializer.
-        self.init(name: name, descrip: descrip,  solutionBlocksName: solutionBlocksName, startBlocks: startBlocks, showInDoActivity: showInDoActivity, hints: (hints as? [(String, URL)])!,audioURL: (audioURL as? URL)!)
+        self.init(name: name, descrip: descrip,  solutionBlocksName: solutionBlocksName, startBlocks: startBlocks, showInDoActivity: showInDoActivity, hints: hints,audioURL: audioURL)
     }
     
     func test(descrip: String = "None"){

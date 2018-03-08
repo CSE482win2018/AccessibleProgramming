@@ -64,7 +64,7 @@ class ManageHintsTableViewController: UITableViewController,UITextFieldDelegate 
             let hint = hints[indexPath.row]
             // Configure the cell...
             cell.hintText.text=hint.0
-            cell.fileURL = hint.1
+            hints[indexPath.row].1=cell.fileURL
             cell.viewController=self
             cell.hintText.tag = indexPath.row
             cell.hintText.delegate = self
@@ -85,6 +85,7 @@ class ManageHintsTableViewController: UITableViewController,UITextFieldDelegate 
         print(textField.tag)
         print("in Should End Editing")//you will get the row. items[textField.tag] will get the object
         hints[textField.tag].0 = textField.text!
+        
         textField.resignFirstResponder()
         return true
     }
@@ -111,6 +112,9 @@ class ManageHintsTableViewController: UITableViewController,UITextFieldDelegate 
 
     func signalFromCreate() {
         parentVC?.getHints(hints: self.hints)
+    }
+    func setURL(row: Int, url: URL){
+        hints[row].1 = url
     }
     /*
     // Override to support conditional editing of the table view.
