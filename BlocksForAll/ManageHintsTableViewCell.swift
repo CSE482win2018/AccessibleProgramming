@@ -66,36 +66,39 @@ class ManageHintsTableViewCell: UITableViewCell, AVAudioPlayerDelegate, AVAudioR
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        playButton.isEnabled = false
-        stopButton.isEnabled = false
-        self.audioFileName = randomAlphaNumericString(length: 11)+".caf"
-        let fileMgr = FileManager.default
-        let dirPaths = fileMgr.urls(for: .documentDirectory,
-                                    in: .userDomainMask)
-        let soundFileURL = dirPaths[0].appendingPathComponent(self.audioFileName!)
-        self.fileURL=soundFileURL
-        //self.viewController?.addURL(cell: self)
-        let recordSettings =
-            [AVEncoderAudioQualityKey: AVAudioQuality.min.rawValue,
-             AVEncoderBitRateKey: 16,
-             AVNumberOfChannelsKey: 2,
-             AVSampleRateKey: 44100.0] as [String : Any]
-
-        let audioSession = AVAudioSession.sharedInstance()
-        do {
-            try audioSession.setCategory(
-                AVAudioSessionCategoryPlayAndRecord)
-        } catch let error as NSError {
-            print("audioSession error: \(error.localizedDescription)")
+        if (self.fileURL == nil) {
+            playButton.isEnabled = false
+            stopButton.isEnabled = false
+            self.audioFileName = randomAlphaNumericString(length: 11)+".caf"
+            let fileMgr = FileManager.default
+            let dirPaths = fileMgr.urls(for: .documentDirectory,
+                                        in: .userDomainMask)
+            let soundFileURL = dirPaths[0].appendingPathComponent(self.audioFileName!)
+            self.fileURL=soundFileURL
+            //self.viewController?.addURL(cell: self)
+            let recordSettings =
+                [AVEncoderAudioQualityKey: AVAudioQuality.min.rawValue,
+                 AVEncoderBitRateKey: 16,
+                 AVNumberOfChannelsKey: 2,
+                 AVSampleRateKey: 44100.0] as [String : Any]
+            
+            let audioSession = AVAudioSession.sharedInstance()
+            do {
+                try audioSession.setCategory(
+                    AVAudioSessionCategoryPlayAndRecord)
+            } catch let error as NSError {
+                print("audioSession error: \(error.localizedDescription)")
+            }
+            
+            do {
+                try audioRecorder = AVAudioRecorder(url: soundFileURL,
+                                                    settings: recordSettings as [String : AnyObject])
+                audioRecorder?.prepareToRecord()
+            } catch let error as NSError {
+                print("audioSession error: \(error.localizedDescription)")
+            }
         }
         
-        do {
-            try audioRecorder = AVAudioRecorder(url: soundFileURL,
-                                                settings: recordSettings as [String : AnyObject])
-            audioRecorder?.prepareToRecord()
-        } catch let error as NSError {
-            print("audioSession error: \(error.localizedDescription)")
-        }
         //print("fileName: "+(self.audioFileName?)!)
         // Initialization code
     }

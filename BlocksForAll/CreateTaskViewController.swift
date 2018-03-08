@@ -203,7 +203,8 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
         getBlocksFlag = 1
         startBlocksViewController?.reloadBlocks(savedblocks: startBlocks)
         descripURL = activity?.audioURL
-        hintsTableViewController?.signalFromCreate()
+        hints = activity?.hints
+        hintsTableViewController?.hints = (activity?.hints)!
         do {
             try audioPlayer = AVAudioPlayer(contentsOf:
                 (activity?.audioURL)!)
@@ -257,12 +258,6 @@ class CreateTaskViewController: UIViewController , AVAudioPlayerDelegate, AVAudi
         updateBlocks()
     }
     
-    func reloadViewFromNib() {
-        let parent = blocksView.superview
-        blocksView.removeFromSuperview()
-//        blocksView = nil
-        parent?.addSubview(blocksView) // This line causes the view to be reloaded
-    }
     
   
     

@@ -28,6 +28,7 @@ class ManageHintsTableViewController: UITableViewController,UITextFieldDelegate 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         print("TableViewLoaded")
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,7 +53,15 @@ class ManageHintsTableViewController: UITableViewController,UITextFieldDelegate 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return hints.count
     }
-
+    
+//
+    /*
+     // Override to support conditional rearranging of the table view.
+     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+     }
+     */
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "ManageHintsTableViewCell"
@@ -60,7 +69,7 @@ class ManageHintsTableViewController: UITableViewController,UITextFieldDelegate 
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ManageHintsTableViewCell else{
                     fatalError("dequed cell was not a hint")
                 }
-            
+
             let hint = hints[indexPath.row]
             // Configure the cell...
             cell.hintText.text=hint.0
@@ -71,9 +80,22 @@ class ManageHintsTableViewController: UITableViewController,UITextFieldDelegate 
             return cell
         }
         else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-            cell.textLabel?.text = hints[indexPath.row].0
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ManageHintsTableViewCell else{
+                fatalError("dequed cell was not a hint")
+            }
+            
+            let hint = hints[indexPath.row]
+            // Configure the cell...
+            cell.hintText.text=hint.0
+            cell.fileURL = hint.1
+            cell.viewController=self
+            cell.hintText.tag = indexPath.row
+            cell.hintText.delegate = self
             return cell
+//            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ManageHintsTableViewCell
+//            cell?.textLabel?.text = hints[indexPath.row].0
+//            cell?.fileURL = hints[indexPath.row].1
+//            return cell!
         }
     }
     func textFieldDidBeginEditing(_ textField: UITextField) {      //delegate method
@@ -113,9 +135,7 @@ class ManageHintsTableViewController: UITableViewController,UITextFieldDelegate 
     func signalFromCreate() {
         parentVC?.getHints(hints: self.hints)
     }
-    func setURL(row: Int, url: URL){
-        hints[row].1 = url
-    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
