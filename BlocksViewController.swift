@@ -129,17 +129,20 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
     }
     
     @IBAction func playHint(_ sender: Any) {
-        if hints != nil{
+        if (hints != nil && (hints?.count)! > 0) {
             let announcement = hints![hintCtr].0
-            FeedBackText.text = announcement
+            FeedBackText.text = "Hint \(hintCtr+1) : " + announcement
             if UIAccessibilityIsVoiceOverRunning(){
                 sleep(2)
             }
             UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(announcement, comment: ""))
+             
             do {
-                self.audioPlayer! = try AVAudioPlayer(contentsOf: hints![hintCtr].1!)
-                audioPlayer!.prepareToPlay()
+                let url = hints![hintCtr].1
+                try audioPlayer = AVAudioPlayer(contentsOf: url!)
                 audioPlayer!.volume = 1.0
+                audioPlayer!.delegate = self
+                audioPlayer!.prepareToPlay()
                 audioPlayer!.play()
             } catch let error as NSError {
                 //self.player = nil
