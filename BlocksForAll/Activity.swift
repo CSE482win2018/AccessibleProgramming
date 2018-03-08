@@ -22,6 +22,8 @@ class Activity: NSObject, NSCoding {
     var showInDoActivity: Bool
     var audioURL: URL
     var hints:[(String,URL?)]
+    var hintsString: [String]
+    var hintsURL: [URL?]
     struct PropertyKey {
         static let name = "name"
         static let descrip = "descrip"
@@ -29,7 +31,8 @@ class Activity: NSObject, NSCoding {
         static let solutionBlocksName = "solutionBlocksName"
         static let startBlocks = "startBlocks"
         static let showInDoActivity = "showInDoActivity"
-        static let hints = "hints"
+        static let hintsString = "hintsString"
+        static let hintsURL = "hintsURL"
         static let audioURL = "audioURL"
     }
     
@@ -62,6 +65,15 @@ class Activity: NSObject, NSCoding {
         self.startBlocks = startBlocks!
         self.showInDoActivity = showInDoActivity
         self.hints = hints!
+        self.hintsString = []
+        self.hintsURL = []
+        if (hints != nil && (hints?.count)! > 0) {
+            for i in 0...self.hints.count-1 {
+                self.hintsString.append(self.hints[i].0)
+                self.hintsURL.append(self.hints[i].1)
+            }
+        }
+        
         self.audioURL = audioURL!
     }
     
@@ -72,7 +84,8 @@ class Activity: NSObject, NSCoding {
         aCoder.encode(solutionBlocksName, forKey: PropertyKey.solutionBlocksName)
         aCoder.encode(startBlocks, forKey: PropertyKey.startBlocks)
         aCoder.encode(showInDoActivity, forKey: PropertyKey.showInDoActivity)
-        aCoder.encode(hints, forKey: PropertyKey.hints)
+        aCoder.encode(hintsString, forKey: PropertyKey.hintsString)
+        aCoder.encode(hintsURL, forKey: PropertyKey.hintsURL)
         aCoder.encode(audioURL,forKey: PropertyKey.audioURL)
 
     }
@@ -89,9 +102,17 @@ class Activity: NSObject, NSCoding {
         let startBlocks = aDecoder.decodeObject(forKey: PropertyKey.startBlocks) as? [Block]
         //        let hints = aDecoder.decodeObject(forKey: PropertyKey.hints) as? [String]
         let showInDoActivity = aDecoder.decodeBool(forKey: PropertyKey.showInDoActivity) as Bool
-        let hints = aDecoder.decodeObject(forKey: PropertyKey.hints) as? [(String,URL?)]
+        let hintsString = aDecoder.decodeObject(forKey: PropertyKey.hintsString) as? [String]
+        let hintsURL = aDecoder.decodeObject(forKey: PropertyKey.hintsURL) as? [URL?]
         let audioURL = aDecoder.decodeObject(forKey: PropertyKey.audioURL) as? URL
         // Must call designated initializer.
+        var hints = [(String,URL?)]()
+        if (hintsString != nil && (hintsString?.count)! > 0) {
+            for i in 0...(hintsString?.count)!-1 {
+                hints.append((hintsString![i], hintsURL?[i]))
+            }
+        }
+       
         self.init(name: name, descrip: descrip,  solutionBlocksName: solutionBlocksName, startBlocks: startBlocks, showInDoActivity: showInDoActivity, hints: hints,audioURL: audioURL)
     }
     
