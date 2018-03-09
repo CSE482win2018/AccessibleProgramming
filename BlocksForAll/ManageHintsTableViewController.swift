@@ -67,10 +67,13 @@ class ManageHintsTableViewController: UITableViewController,UITextFieldDelegate 
      */
     func updateURL() {
         var cells = tableView.visibleCells
-        for i in 0...cells.count-1 {
-            let c = cells[i] as? ManageHintsTableViewCell
-            hints[i].1 = c?.fileURL
+        if (cells.count > 0){
+            for i in 0...cells.count-1 {
+                let c = cells[i] as? ManageHintsTableViewCell
+                hints[i].1 = c?.fileURL
+            }
         }
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -80,9 +83,12 @@ class ManageHintsTableViewController: UITableViewController,UITextFieldDelegate 
                     fatalError("dequed cell was not a hint")
                 }
 
-            let hint = hints[indexPath.row]
+            var hint = hints[indexPath.row]
             // Configure the cell...
-            cell.hintText.text=hint.0
+            if (hints[indexPath.row].0 == "") {
+                hints[indexPath.row].0 = "Need Hint Text"
+            }
+            cell.hintText.text = hints[indexPath.row].0
             hints[indexPath.row].1=cell.fileURL
             cell.viewController=self
             cell.hintText.tag = indexPath.row
@@ -103,30 +109,7 @@ class ManageHintsTableViewController: UITableViewController,UITextFieldDelegate 
             cell.hintText.delegate = self
             cell.isOld = true
             cell.playButton.isEnabled = true
-//            // set up record
-//            let recordSettings =
-//                [AVEncoderAudioQualityKey: AVAudioQuality.min.rawValue,
-//                 AVEncoderBitRateKey: 16,
-//                 AVNumberOfChannelsKey: 2,
-//                 AVSampleRateKey: 44100.0] as [String : Any]
-//
-//            do {
-//                try cell.audioRecorder = AVAudioRecorder(url: cell.fileURL,
-//                                                    settings: recordSettings as [String : AnyObject])
-//                cell.audioRecorder?.prepareToRecord()
-//            } catch let error as NSError {
-//                print("audioSession error: \(error.localizedDescription)")
-//            }
-            // set up playing
-//            do {
-//                cell.playButton.isEnabled = true
-//                try cell.audioPlayer = AVAudioPlayer(contentsOf:
-//                    cell.fileURL)
-//                cell.audioPlayer!.delegate = cell
-//                cell.audioPlayer!.prepareToPlay()
-//            } catch let error as NSError {
-//                print("audioPlayer error: \(error.localizedDescription)")
-//            }
+          
             return cell
 //            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ManageHintsTableViewCell
 //            cell?.textLabel?.text = hints[indexPath.row].0

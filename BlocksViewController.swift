@@ -221,6 +221,7 @@ class BlocksViewController:  RobotControlViewController, UICollectionViewDataSou
                 play(commands)
             }
         }
+        
     }
     
     func unrollLoop(times: Int, blocks:[Block])->[String]{
